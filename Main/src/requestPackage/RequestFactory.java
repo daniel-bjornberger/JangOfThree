@@ -7,7 +7,7 @@ import static java.util.Arrays.copyOfRange;
  * @author Daniel Björnberger
  */
 public class RequestFactory {
-    
+
 
     public RequestObject createRequestObject(String input) {
 
@@ -37,16 +37,19 @@ public class RequestFactory {
                 case "GET":
                     requestObject.setMethod(Method.GET);
                     requestObject.setUrl(currentRow[1].toLowerCase());
+                    requestObject.setProtocolVersion(currentRow[2].toLowerCase());
                     break;
 
                 case "HEAD":
                     requestObject.setMethod(Method.HEAD);
                     requestObject.setUrl(currentRow[1].toLowerCase());
+                    requestObject.setProtocolVersion(currentRow[2].toLowerCase());
                     break;
 
                 case "POST":
                     requestObject.setMethod(Method.POST);
                     requestObject.setUrl(currentRow[1].toLowerCase());
+                    requestObject.setProtocolVersion(currentRow[2].toLowerCase());
                     break;
 
                 case "Host:":

@@ -13,6 +13,8 @@ public class RequestObject implements Request {
 
     private String url;
 
+    private String protocolVersion;
+
     private String host;
 
     private String[] accept;
@@ -37,6 +39,7 @@ public class RequestObject implements Request {
     public RequestObject() {
         method = Method.OTHER;
         url = EMPTY_STRING;
+        protocolVersion = EMPTY_STRING;
         host = EMPTY_STRING;
         accept = EMPTY_ARRAY;
         acceptLanguage = EMPTY_ARRAY;
@@ -56,6 +59,16 @@ public class RequestObject implements Request {
     @Override
     public void setMethod(Method method) {
         this.method = method;
+    }
+
+    @Override
+    public String getProtocolVersion() {
+        return this.protocolVersion;
+    }
+
+    @Override
+    public void setProtocolVersion(String protocolVersion) {
+        this.protocolVersion = protocolVersion;
     }
 
     @Override
@@ -148,6 +161,8 @@ public class RequestObject implements Request {
                 .append(this.method)
                 .append("\nUrl: ")
                 .append(this.url)
+                .append("\nProtocol Version: ")
+                .append(this.protocolVersion)
                 .append("\nHost: ")
                 .append(this.host)
                 .append("\nAccept: ")

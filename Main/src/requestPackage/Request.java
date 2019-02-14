@@ -17,6 +17,11 @@ public interface Request {
     void setUrl(String url);
 
 
+    String getProtocolVersion();
+
+    void setProtocolVersion(String protocolVersion);
+
+
     String getHost();
 
     void setHost(String host);
