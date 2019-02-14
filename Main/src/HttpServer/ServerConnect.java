@@ -13,6 +13,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 import java.util.Observable;
+import java.util.Observer;
 import java.util.StringTokenizer;
 
 // The tutorial can be found just here on the SSaurel's Blog : 
@@ -25,7 +26,8 @@ public class ServerConnect extends Observable implements Runnable{
     static final String FILE_NOT_FOUND = "404.html";
     static final String METHOD_NOT_SUPPORTED = "not_supported.html";
     // port to listen connection
-    static final int PORT = 8082;
+    static int PORT = 8082;
+    private ServerSocket serverSocket;
     private String requestString;
 
 
@@ -36,19 +38,29 @@ public class ServerConnect extends Observable implements Runnable{
     // Client Connection via Socket Class
     private Socket connect;
 
-    public ServerConnect(Socket c) {
-        connect = c;
+
+
+    public ServerConnect(Observer observer,ServerSocket serverSocket){
+
+        addObserver(observer);
+        try {
+
+            this.serverSocket=serverSocket;
+            this.connect= serverSocket.accept();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getRequestString() {
         return requestString;
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         try {
 
-            ServerSocket serverSocket = new ServerSocket(PORT);
-            System.out.println("Server started.\nListening for connections on port : " + PORT + " ...\n");
+            //serverSocket = new ServerSocket(PORT);
+            //System.out.println("Server started.\nListening for connections on port : " + PORT + " ...\n");
 
             // we listen until user halts server execution
             while (true) {
@@ -66,7 +78,7 @@ public class ServerConnect extends Observable implements Runnable{
         } catch (IOException e) {
             System.err.println("Server Connection error : " + e.getMessage());
         }
-    }
+    }*/
 
     @Override
     public void run() {
@@ -81,14 +93,11 @@ public class ServerConnect extends Observable implements Runnable{
             out = new PrintWriter(connect.getOutputStream());
             // get binary output stream to client (for requested data)
             dataOut = new BufferedOutputStream(connect.getOutputStream());
-
             // get first line of the request from the client
             in.mark(9999999);
             StringBuilder stringBuilder = new StringBuilder();
-            /*for(int i = 0; i<15;i++){
-                stringBuilder.append(in.readLine()+"\n");
-            }
-    */
+
+            System.out.println("Got here");
             String thisLine= in.readLine();
             do {
                 stringBuilder.append(thisLine+"\n");
@@ -98,7 +107,9 @@ public class ServerConnect extends Observable implements Runnable{
 
 
             requestString = stringBuilder.toString();
-            notifyObservers();
+            setChanged();
+            notifyObservers(requestString);
+           // System.out.println(requestString);
             in.reset();
             String input = in.readLine();
 
