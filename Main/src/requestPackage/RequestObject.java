@@ -162,6 +162,6 @@ public class RequestObject implements Request {
                 .append(this.body);
 
         return builder.toString();
-        
     }
+
 }

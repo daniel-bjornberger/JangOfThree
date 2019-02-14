@@ -7,24 +7,12 @@ import static java.util.Arrays.copyOfRange;
  * @author Daniel Björnberger
  */
 public class RequestFactory {
+    
 
     public RequestObject createRequestObject(String input) {
 
 
         RequestObject requestObject = new RequestObject();
-
-
-        input = "POST /cgi-bin/process.cgi HTTP/1.1\n" +
-                "User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)\n" +
-                "Host: www.tutorialspoint.com\n" +
-                "Content-Type: application/x-www-form-urlencoded\n" +
-                "Content-Length: length\n" +
-                "Accept-Language: en-us,swed, english,spanish\n" +
-                "Accept-Encoding: gzip, deflate\n" +
-                "Connection: Keep-Alive\n\nBody-Body-Body..........";
-
-        System.out.println(input + "\n\n");
-
 
         String[] inputRowByRow = input.split("\\n");
 
@@ -48,41 +36,41 @@ public class RequestFactory {
 
                 case "GET":
                     requestObject.setMethod(Method.GET);
-                    requestObject.setUrl(currentRow[1]);
+                    requestObject.setUrl(currentRow[1].toLowerCase());
                     break;
 
                 case "HEAD":
                     requestObject.setMethod(Method.HEAD);
-                    requestObject.setUrl(currentRow[1]);
+                    requestObject.setUrl(currentRow[1].toLowerCase());
                     break;
 
                 case "POST":
                     requestObject.setMethod(Method.POST);
-                    requestObject.setUrl(currentRow[1]);
+                    requestObject.setUrl(currentRow[1].toLowerCase());
                     break;
 
                 case "Host:":
-                    requestObject.setHost(currentRow[1]);
+                    requestObject.setHost(currentRow[1].toLowerCase());
                     break;
 
                 case "Accept:":
-                    requestObject.setAccept(copyOfRange(currentRow, 1, currentRow.length));
+                    requestObject.setAccept(stringArrayToLowerCase(copyOfRange(currentRow, 1, currentRow.length)));
                     break;
 
                 case "Accept-Language:":
-                    requestObject.setAcceptLanguage(copyOfRange(currentRow, 1, currentRow.length));
+                    requestObject.setAcceptLanguage(stringArrayToLowerCase(copyOfRange(currentRow, 1, currentRow.length)));
                     break;
 
                 case "Accept-Charset:":
-                    requestObject.setAcceptCharset(copyOfRange(currentRow, 1, currentRow.length));
+                    requestObject.setAcceptCharset(stringArrayToLowerCase(copyOfRange(currentRow, 1, currentRow.length)));
                     break;
 
                 case "Accept-Encoding:":
-                    requestObject.setAcceptEncoding(copyOfRange(currentRow, 1, currentRow.length));
+                    requestObject.setAcceptEncoding(stringArrayToLowerCase(copyOfRange(currentRow, 1, currentRow.length)));
                     break;
 
                 case "Connection:":
-                    requestObject.setConnection(currentRow[1]);
+                    requestObject.setConnection(currentRow[1].toLowerCase());
                     break;
 
                 default:
@@ -95,5 +83,21 @@ public class RequestFactory {
         return requestObject;
 
     }
+
+
+    private String[] stringArrayToLowerCase(String[] stringArray) {
+
+        String[] newStringArray = new String[stringArray.length];
+
+        for (int i = 0; i < stringArray.length; i++) {
+
+            newStringArray[i] = stringArray[i].toLowerCase();
+
+        }
+
+        return newStringArray;
+
+    }
+
 
 }
