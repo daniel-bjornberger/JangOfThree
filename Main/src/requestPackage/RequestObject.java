@@ -1,7 +1,6 @@
 package requestPackage;
 
 import requestPackage.MethodEnum.Method;
-
 import java.util.Arrays;
 
 /**
@@ -140,6 +139,9 @@ public class RequestObject implements Request {
     }
 
 
+    /** The method 'toString' is only for testing purpose.
+     * @return The method returns a String representation of a RequestObject.
+     */
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("Method: ")
