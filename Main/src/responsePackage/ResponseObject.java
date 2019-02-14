@@ -182,7 +182,7 @@ public class ResponseObject implements Response {
                 this.connection +
                 "\nBody: " +
                 this.body;
-                       
+
     }
 
 }

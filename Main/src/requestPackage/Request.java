@@ -56,4 +56,10 @@ public interface Request {
 
     void setBody(String body);
 
+
+    boolean isValid();
+
+    void setValid(boolean valid);
+
+
 }

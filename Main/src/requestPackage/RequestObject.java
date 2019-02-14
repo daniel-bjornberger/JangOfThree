@@ -29,6 +29,8 @@ public class RequestObject implements Request {
 
     private String body;
 
+    private boolean valid;
+
 
     private static final String[] EMPTY_ARRAY = new String[0];
 
@@ -37,6 +39,7 @@ public class RequestObject implements Request {
 
 
     public RequestObject() {
+
         method = Method.OTHER;
         url = EMPTY_STRING;
         protocolVersion = EMPTY_STRING;
@@ -47,6 +50,7 @@ public class RequestObject implements Request {
         acceptEncoding = EMPTY_ARRAY;
         connection = EMPTY_STRING;
         body = EMPTY_STRING;
+        valid = true;
 
     }
 
@@ -151,6 +155,18 @@ public class RequestObject implements Request {
         this.body = body;
     }
 
+    @Override
+    public boolean isValid() {
+        return this.valid;
+    }
+
+    @Override
+    public void setValid(boolean valid) {
+        this.valid = valid;
+    }
+
+
+
 
     /** The method 'toString' is only for testing purpose.
      * @return The method returns a String representation of a RequestObject.
@@ -177,7 +193,9 @@ public class RequestObject implements Request {
                 "\nConnection: " +
                 this.connection +
                 "\nBody: " +
-                this.body;
+                this.body +
+                "\nValid: " +
+                this.valid;
 
     }
 
