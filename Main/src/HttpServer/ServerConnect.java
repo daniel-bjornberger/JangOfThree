@@ -12,12 +12,13 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
+import java.util.Observable;
 import java.util.StringTokenizer;
 
 // The tutorial can be found just here on the SSaurel's Blog : 
 // https://www.ssaurel.com/blog/create-a-simple-http-web-server-in-java
 // Each Client Connection will be managed in a dedicated Thread
-public class ServerConnect implements Runnable{
+public class ServerConnect extends Observable implements Runnable{
 
     static final File WEB_ROOT = new File(".");
     static final String DEFAULT_FILE = "index.html";
@@ -25,6 +26,9 @@ public class ServerConnect implements Runnable{
     static final String METHOD_NOT_SUPPORTED = "not_supported.html";
     // port to listen connection
     static final int PORT = 8082;
+    private String requestString;
+
+
 
     // verbose mode
     static final boolean verbose = true;
@@ -34,6 +38,10 @@ public class ServerConnect implements Runnable{
 
     public ServerConnect(Socket c) {
         connect = c;
+    }
+
+    public String getRequestString() {
+        return requestString;
     }
 
     public static void main(String[] args) {
@@ -86,10 +94,11 @@ public class ServerConnect implements Runnable{
                 stringBuilder.append(thisLine+"\n");
                 thisLine = in.readLine();
 
-            }while (thisLine.equals(null));
+            }while (!thisLine.isEmpty());
 
 
-            System.out.println("Incomming request:" + stringBuilder.toString());
+            requestString = stringBuilder.toString();
+            notifyObservers();
             in.reset();
             String input = in.readLine();
 
