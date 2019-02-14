@@ -16,7 +16,9 @@ public class RequestObserver implements Observer {
     public void update(Observable o, Object arg) {
         if (o instanceof ServerConnect){
             System.out.println("DET FUNKAR");
-
+            System.out.println("=========================================");
+            System.out.println(((ServerConnect) o).getRequestString());
+            System.out.println("=========================================");
         }
     }
 }
