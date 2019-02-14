@@ -157,28 +157,28 @@ public class RequestObject implements Request {
      */
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder("Method: ")
-                .append(this.method)
-                .append("\nUrl: ")
-                .append(this.url)
-                .append("\nProtocol Version: ")
-                .append(this.protocolVersion)
-                .append("\nHost: ")
-                .append(this.host)
-                .append("\nAccept: ")
-                .append(Arrays.toString(this.accept))
-                .append("\nAccept Language: ")
-                .append(Arrays.toString(this.acceptLanguage))
-                .append("\nAccept Charset: ")
-                .append(Arrays.toString(this.acceptCharset))
-                .append("\nAccept Encoding: ")
-                .append(Arrays.toString(this.acceptEncoding))
-                .append("\nConnection: ")
-                .append(this.connection)
-                .append("\nBody: ")
-                .append(this.body);
 
-        return builder.toString();
+        return  "Method: " +
+                this.method +
+                "\nUrl: " +
+                this.url +
+                "\nProtocol Version: " +
+                this.protocolVersion +
+                "\nHost: " +
+                this.host +
+                "\nAccept: " +
+                Arrays.toString(this.accept) +
+                "\nAccept-Language: " +
+                Arrays.toString(this.acceptLanguage) +
+                "\nAccept-Charset: " +
+                Arrays.toString(this.acceptCharset) +
+                "\nAccept-Encoding: " +
+                Arrays.toString(this.acceptEncoding) +
+                "\nConnection: " +
+                this.connection +
+                "\nBody: " +
+                this.body;
+
     }
 
 }
