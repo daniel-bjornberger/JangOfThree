@@ -32,15 +32,19 @@ public class ServiceHandler {
                 return file.getPath().toLowerCase().endsWith(".jar");
             }
         });
-        URL[] urls = new URL[fileList.length];
-        for (int i = 0; i <fileList.length; i++){
-            try {
-                urls[i] = fileList[i].toURI().toURL();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
+
+        if (fileList.length>0){
+
+            URL[] urls = new URL[fileList.length];
+            for (int i = 0; i <fileList.length; i++){
+                try {
+                    urls[i] = fileList[i].toURI().toURL();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
             }
+            services = ServiceLoader.load(Service.class,new URLClassLoader(urls));
         }
-        services = ServiceLoader.load(Service.class,new URLClassLoader(urls));
     }
 
     public void checkAdress(String adress){
