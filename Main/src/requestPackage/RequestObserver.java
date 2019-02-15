@@ -22,9 +22,6 @@ public class RequestObserver implements Observer {
         Request request = new RequestObject();
         if (o instanceof ServerConnect){
             System.out.println("=========================================");
-            if (addBody){
-                request.setBody(((ServerConnect) o).getRequestString());
-            }
 
             requestString=((ServerConnect) o).getRequestString();
             System.out.println(((ServerConnect) o).getRequestString());
@@ -34,6 +31,12 @@ public class RequestObserver implements Observer {
             request = requestFactory.createRequestObject(requestString);
             System.out.println("Request object created successfully!");
             System.out.println(request.toString());
+            if (staticFileHandler.detect(request)!=null){
+                System.out.println(staticFileHandler.detect(request));
+            } else {
+                System.out.println("staticFileDetector didn't work!");
+            }
+
 
         }
     }
