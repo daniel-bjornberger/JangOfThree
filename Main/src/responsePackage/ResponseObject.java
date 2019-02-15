@@ -1,5 +1,7 @@
 package responsePackage;
 
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Arrays;
 public class ResponseObject implements Response {
 
 
-    private String version;
+    private String protocolVersion;
 
     private String status;
 
@@ -38,7 +40,7 @@ public class ResponseObject implements Response {
 
     public ResponseObject() {
 
-        version = EMPTY_STRING;
+        protocolVersion = "http/1.1";
         status = EMPTY_STRING;
         statusMessage = EMPTY_STRING;
         date = EMPTY_STRING;
@@ -55,13 +57,13 @@ public class ResponseObject implements Response {
 
 
     @Override
-    public String getVersion() {
-        return this.version;
+    public String getProtocolVersion() {
+        return this.protocolVersion;
     }
 
     @Override
-    public void setVersion(String version) {
-        this.version = version;
+    public void setProtocolVersion(String protocolVersion) {
+        this.protocolVersion = protocolVersion;
     }
 
     @Override
@@ -75,6 +77,11 @@ public class ResponseObject implements Response {
     }
 
     @Override
+    public boolean statusIsSet() {
+        return this.status.length() > 0;
+    }
+
+    @Override
     public String getStatusMessage() {
         return this.statusMessage;
     }
@@ -85,13 +92,23 @@ public class ResponseObject implements Response {
     }
 
     @Override
+    public boolean statusMessageIsSet() {
+        return this.statusMessage.length() > 0;
+    }
+
+    @Override
     public String getDate() {
         return this.date;
     }
 
     @Override
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate() {
+        this.date = java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneOffset.UTC));
+    }
+
+    @Override
+    public boolean dateIsSet() {
+        return this.date.length() > 0;
     }
 
     @Override
@@ -105,6 +122,11 @@ public class ResponseObject implements Response {
     }
 
     @Override
+    public boolean serverIsSet() {
+        return this.server.length() > 0;
+    }
+
+    @Override
     public String[] getContentType() {
         return this.contentType;
     }
@@ -112,6 +134,11 @@ public class ResponseObject implements Response {
     @Override
     public void setContentType(String[] contentType) {
         this.contentType = contentType;
+    }
+
+    @Override
+    public boolean contentTypeIsSet() {
+        return this.contentType.length > 0;
     }
 
     @Override
@@ -125,6 +152,11 @@ public class ResponseObject implements Response {
     }
 
     @Override
+    public boolean contentLengthIsSet() {
+        return this.contentLength > 0;
+    }
+
+    @Override
     public String[] getContentLanguage() {
         return this.contentLanguage;
     }
@@ -132,6 +164,11 @@ public class ResponseObject implements Response {
     @Override
     public void setContentLanguage(String[] contentLanguage) {
         this.contentLanguage = contentLanguage;
+    }
+
+    @Override
+    public boolean contentLanguageIsSet() {
+        return this.contentLanguage.length > 0;
     }
 
     @Override
@@ -145,6 +182,11 @@ public class ResponseObject implements Response {
     }
 
     @Override
+    public boolean connectionIsSet() {
+        return this.connection.length() > 0;
+    }
+
+    @Override
     public String getBody() {
         return this.body;
     }
@@ -154,6 +196,10 @@ public class ResponseObject implements Response {
         this.body = body;
     }
 
+    @Override
+    public boolean bodyIsSet() {
+        return this.body.length() > 0;
+    }
 
 
     /** The method 'toString' is only for testing purpose.
@@ -163,7 +209,7 @@ public class ResponseObject implements Response {
     public String toString() {
 
         return  "Version: " +
-                this.version +
+                this.protocolVersion +
                 "\nStatus: " +
                 this.status +
                 "\nStatus Message: " +
