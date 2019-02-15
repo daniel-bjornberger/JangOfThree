@@ -6,7 +6,8 @@ public class staticFileHandler {
             ".css",
             ".js",
             ".pdf",
-            ".png"
+            ".png",
+            ".jpg"
 
     };
 
