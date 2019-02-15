@@ -39,9 +39,9 @@ public interface Response {
     boolean serverIsSet();
 
 
-    String[] getContentType();
+    String getContentType();
 
-    void setContentType(String[] contentType);
+    void setContentType(String contentType);
 
     boolean contentTypeIsSet();
 
@@ -53,9 +53,9 @@ public interface Response {
     boolean contentLengthIsSet();
 
 
-    String[] getContentLanguage();
+    String getContentLanguage();
 
-    void setContentLanguage(String[] contentLanguage);
+    void setContentLanguage(String contentLanguage);
 
     boolean contentLanguageIsSet();
 

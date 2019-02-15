@@ -20,18 +20,16 @@ public class ResponseObject implements Response {
 
     private String server;
 
-    private String[] contentType;
+    private String contentType;
 
     private int contentLength;
 
-    private String[] contentLanguage;
+    private String contentLanguage;
 
     private String connection;
 
     private String body;
 
-
-    private static final String[] EMPTY_ARRAY = new String[0];
 
     private static final String EMPTY_STRING = "";
 
@@ -45,9 +43,9 @@ public class ResponseObject implements Response {
         statusMessage = EMPTY_STRING;
         date = EMPTY_STRING;
         server = EMPTY_STRING;
-        contentType = EMPTY_ARRAY;
+        contentType = EMPTY_STRING;
         contentLength = 0;
-        contentLanguage = EMPTY_ARRAY;
+        contentLanguage = EMPTY_STRING;
         connection = EMPTY_STRING;
         body = EMPTY_STRING;
 
@@ -127,18 +125,18 @@ public class ResponseObject implements Response {
     }
 
     @Override
-    public String[] getContentType() {
+    public String getContentType() {
         return this.contentType;
     }
 
     @Override
-    public void setContentType(String[] contentType) {
+    public void setContentType(String contentType) {
         this.contentType = contentType;
     }
 
     @Override
     public boolean contentTypeIsSet() {
-        return this.contentType.length > 0;
+        return this.contentType.length() > 0;
     }
 
     @Override
@@ -157,18 +155,18 @@ public class ResponseObject implements Response {
     }
 
     @Override
-    public String[] getContentLanguage() {
+    public String getContentLanguage() {
         return this.contentLanguage;
     }
 
     @Override
-    public void setContentLanguage(String[] contentLanguage) {
+    public void setContentLanguage(String contentLanguage) {
         this.contentLanguage = contentLanguage;
     }
 
     @Override
     public boolean contentLanguageIsSet() {
-        return this.contentLanguage.length > 0;
+        return this.contentLanguage.length() > 0;
     }
 
     @Override
@@ -219,11 +217,11 @@ public class ResponseObject implements Response {
                 "\nServer: " +
                 this.server +
                 "\nContent-Type: " +
-                Arrays.toString(this.contentType) +
+                this.contentType +
                 "\nContent-Length: " +
                 this.contentLength +
                 "\nContent-Language: " +
-                Arrays.toString(this.contentLanguage) +
+                this.contentLanguage +
                 "\nConnection: " +
                 this.connection +
                 "\nBody: " +
