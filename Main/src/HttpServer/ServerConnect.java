@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 // The tutorial can be found just here on the SSaurel's Blog : 
 // https://www.ssaurel.com/blog/create-a-simple-http-web-server-in-java
@@ -97,16 +98,15 @@ public class ServerConnect extends Observable implements Runnable{
             in.mark(9999999);
             StringBuilder stringBuilder = new StringBuilder();
 
-            System.out.println("Got here");
             String thisLine= in.readLine();
+
             do {
                 stringBuilder.append(thisLine+"\n");
                 thisLine = in.readLine();
 
             }while (!thisLine.isEmpty());
-
-
             requestString = stringBuilder.toString();
+
             setChanged();
             notifyObservers(requestString);
            // System.out.println(requestString);

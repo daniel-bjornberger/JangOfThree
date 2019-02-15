@@ -19,7 +19,6 @@ public static void main(String[]args){
 
         }
     };
-
     try {
         ServerSocket serverSocket=new ServerSocket(8082);
         while (true){
@@ -34,9 +33,5 @@ public static void main(String[]args){
         } catch (IOException e) {
             e.printStackTrace();
             }
-
-    }
-    public static void updateRequestString(String target, String input){
-        input = target;
     }
 }

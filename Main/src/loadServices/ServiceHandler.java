@@ -8,9 +8,7 @@ import java.net.URLClassLoader;
 import java.util.ServiceLoader;
 
 
-/**
- * @author Pontus Fredriksson
- */
+/** @author Pontus Fredriksson */
 public class ServiceHandler {
     ServiceLoader<Service> services;
 
@@ -40,6 +38,18 @@ public class ServiceHandler {
         }
         services = ServiceLoader.load(Service.class,new URLClassLoader(urls));
     }
+
+    public void checkAdress(String adress){
+
+        for (Service service: services){
+            if(service.getClass().getAnnotation(Adress.class).value().equals(adress))
+            {
+
+            }
+
+        }
+    }
+
     @Override
     public String toString(){
         StringBuilder output = new StringBuilder();
