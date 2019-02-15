@@ -1,8 +1,7 @@
-package responsePackage;
+package responsepackage;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 
 /**
  * @author Daniel Björnberger

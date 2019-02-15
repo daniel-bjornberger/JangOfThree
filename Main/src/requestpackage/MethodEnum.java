@@ -1,4 +1,4 @@
-package requestPackage;
+package requestpackage;
 
 /**
  * @author Daniel Björnberger

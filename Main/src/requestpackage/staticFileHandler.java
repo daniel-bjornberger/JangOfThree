@@ -1,4 +1,4 @@
-package requestPackage;
+package requestpackage;
 
 public class staticFileHandler {
     private static String[] formats= {

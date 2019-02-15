@@ -1,4 +1,4 @@
-package HttpServer;
+package httpserver;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -15,7 +15,6 @@ import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.StringTokenizer;
-import java.util.stream.Collectors;
 
 // The tutorial can be found just here on the SSaurel's Blog : 
 // https://www.ssaurel.com/blog/create-a-simple-http-web-server-in-java

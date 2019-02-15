@@ -1,11 +1,10 @@
 package main;
 
-import HttpServer.ServerConnect;
-import requestPackage.RequestObserver;
+import httpserver.ServerConnect;
+import requestpackage.RequestObserver;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.Observable;
 import java.util.Observer;
 

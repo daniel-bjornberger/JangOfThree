@@ -1,6 +1,6 @@
-package requestPackage;
+package requestpackage;
 
-import HttpServer.ServerConnect;
+import httpserver.ServerConnect;
 import loadservices.Service;
 import loadservices.ServiceHandler;
 

@@ -3,8 +3,8 @@ package genericpackage;
 import loadservices.Adress;
 import loadservices.Service;
 import loadservices.Type;
-import requestPackage.Request;
-import responsePackage.Response;
+import requestpackage.Request;
+import responsepackage.Response;
 
 /**
  * @author Pontus Fredriksson

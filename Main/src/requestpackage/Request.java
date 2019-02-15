@@ -1,6 +1,6 @@
-package requestPackage;
+package requestpackage;
 
-import requestPackage.MethodEnum.Method;
+import requestpackage.MethodEnum.Method;
 
 /**
  * @author Daniel Björnberger

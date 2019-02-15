@@ -1,7 +1,7 @@
 package loadservices;
 
-import requestPackage.Request;
-import responsePackage.Response;
+import requestpackage.Request;
+import responsepackage.Response;
 
 public interface Service {
 
