@@ -76,6 +76,14 @@ public class RequestFactory {
                     requestObject.setConnection(currentRow[1].toLowerCase());
                     break;
 
+                case "Content-Type:":
+                    requestObject.setContentType(currentRow[1].toLowerCase());
+                    break;
+
+                case "Content-Length:":
+                    requestObject.setContentLength(Integer.valueOf(currentRow[1]));
+                    break;
+
                 default:
                     break;
 
