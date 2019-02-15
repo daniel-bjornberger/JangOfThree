@@ -40,8 +40,10 @@ public class RequestObserver implements Observer {
                 ServiceHandler serviceHandler = new ServiceHandler("out/artifacts/lib/");
                 System.out.println("Services found: "+ serviceHandler.toString());
 
-                for(Service service:serviceHandler.getServices()){
-                   // service.execute(request, );
+                if (serviceHandler.getServices() != null){
+                    for(Service service:serviceHandler.getServices()){
+                        // service.execute(request, );
+                    }
                 }
             }
 

@@ -33,7 +33,7 @@ public class ServiceHandler {
             }
         });
 
-        if (fileList.length>0){
+        if (fileList != null){
 
             URL[] urls = new URL[fileList.length];
             for (int i = 0; i <fileList.length; i++){
@@ -59,12 +59,17 @@ public class ServiceHandler {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder output = new StringBuilder();
         output.append("Services found:");
-        for(Service service:services){
-            output.append(service.toString());
+        if (services != null) {
+
+            for (Service service : services) {
+                output.append(service.toString());
+            }
+            return output.toString();
         }
-        return output.toString();
+        return "";
     }
+
 }
