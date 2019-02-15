@@ -1,6 +1,8 @@
 package requestPackage;
 
 import HttpServer.ServerConnect;
+import loadservices.Service;
+import loadservices.ServiceHandler;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -30,11 +32,17 @@ public class RequestObserver implements Observer {
             RequestFactory requestFactory = new RequestFactory();
             request = requestFactory.createRequestObject(requestString);
             System.out.println("Request object created successfully!");
-            System.out.println(request.toString());
             if (staticFileHandler.detect(request)!=null){
-                System.out.println(staticFileHandler.detect(request));
-            } else {
-                System.out.println("staticFileDetector didn't work!");
+                System.out.println(staticFileHandler.detect(request) + " file requested.");
+            }
+            if(request.isValid()){
+                System.out.println("No static file requested.");
+                ServiceHandler serviceHandler = new ServiceHandler("out/artifacts/lib/");
+                System.out.println("Services found: "+ serviceHandler.toString());
+
+                for(Service service:serviceHandler.getServices()){
+                   // service.execute(request, );
+                }
             }
 
 

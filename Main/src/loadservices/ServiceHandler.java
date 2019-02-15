@@ -1,4 +1,4 @@
-package loadServices;
+package loadservices;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -10,7 +10,11 @@ import java.util.ServiceLoader;
 
 /** @author Pontus Fredriksson */
 public class ServiceHandler {
-    ServiceLoader<Service> services;
+    private ServiceLoader<Service> services;
+
+    public ServiceLoader<Service> getServices() {
+        return services;
+    }
 
 
     /** Constructor
@@ -53,6 +57,7 @@ public class ServiceHandler {
     @Override
     public String toString(){
         StringBuilder output = new StringBuilder();
+        output.append("Services found:");
         for(Service service:services){
             output.append(service.toString());
         }

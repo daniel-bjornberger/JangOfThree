@@ -1,9 +1,8 @@
-package genericPackage;
+package genericpackage;
 
-import jdk.internal.instrumentation.TypeMapping;
-import loadServices.Adress;
-import loadServices.Service;
-import loadServices.Type;
+import loadservices.Adress;
+import loadservices.Service;
+import loadservices.Type;
 import requestPackage.Request;
 import responsePackage.Response;
 
@@ -18,5 +17,10 @@ public class GenericModuleClass implements Service {
     @Override
     public void execute(Request request, Response response) {
         //if request.getUrl().
+    }
+
+    @Override
+    public String toString() {
+        return "GenericModuleClass";
     }
 }

@@ -1,4 +1,4 @@
-package loadServices;
+package loadservices;
 
 import requestPackage.Request;
 import responsePackage.Response;

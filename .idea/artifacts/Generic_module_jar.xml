@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Generic module:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/lib</output-path>
+    <root id="archive" name="Generic module.jar">
+      <element id="module-output" name="Genericmodule" />
+    </root>
+  </artifact>
+</component>
