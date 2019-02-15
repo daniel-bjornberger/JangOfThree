@@ -27,6 +27,10 @@ public class RequestObject implements Request {
 
     private String connection;
 
+    private String contentType;
+
+    private int contentLength;
+
     private String body;
 
     private boolean valid;
@@ -49,6 +53,8 @@ public class RequestObject implements Request {
         acceptCharset = EMPTY_ARRAY;
         acceptEncoding = EMPTY_ARRAY;
         connection = EMPTY_STRING;
+        contentType = EMPTY_STRING;
+        contentLength = 0;
         body = EMPTY_STRING;
         valid = true;
 
@@ -66,6 +72,21 @@ public class RequestObject implements Request {
     }
 
     @Override
+    public String getUrl() {
+        return this.url;
+    }
+
+    @Override
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public boolean urlIsSet() {
+        return this.url.length() > 0;
+    }
+
+    @Override
     public String getProtocolVersion() {
         return this.protocolVersion;
     }
@@ -76,13 +97,8 @@ public class RequestObject implements Request {
     }
 
     @Override
-    public String getUrl() {
-        return this.url;
-    }
-
-    @Override
-    public void setUrl(String url) {
-        this.url = url;
+    public boolean protocolVersionIsSet() {
+        return this.protocolVersion.length() > 0;
     }
 
     @Override
@@ -96,6 +112,11 @@ public class RequestObject implements Request {
     }
 
     @Override
+    public boolean hostIsSet() {
+        return this.host.length() > 0;
+    }
+
+    @Override
     public String[] getAccept() {
         return this.accept;
     }
@@ -103,6 +124,11 @@ public class RequestObject implements Request {
     @Override
     public void setAccept(String[] accept) {
         this.accept = accept;
+    }
+
+    @Override
+    public boolean acceptIsSet() {
+        return this.accept.length > 0;
     }
 
     @Override
@@ -116,6 +142,11 @@ public class RequestObject implements Request {
     }
 
     @Override
+    public boolean acceptLanguageIsSet() {
+        return this.acceptLanguage.length > 0;
+    }
+
+    @Override
     public String[] getAcceptCharset() {
         return this.acceptCharset;
     }
@@ -123,6 +154,11 @@ public class RequestObject implements Request {
     @Override
     public void setAcceptCharset(String[] acceptCharset) {
         this.acceptCharset = acceptCharset;
+    }
+
+    @Override
+    public boolean acceptCharsetIsSet() {
+        return this.acceptCharset.length > 0;
     }
 
     @Override
@@ -136,6 +172,11 @@ public class RequestObject implements Request {
     }
 
     @Override
+    public boolean acceptEncodingIsSet() {
+        return this.acceptEncoding.length > 0;
+    }
+
+    @Override
     public String getConnection() {
         return this.connection;
     }
@@ -146,6 +187,41 @@ public class RequestObject implements Request {
     }
 
     @Override
+    public boolean connectionIsSet() {
+        return this.connection.length() > 0;
+    }
+
+    @Override
+    public String getContentType() {
+        return this.contentType;
+    }
+
+    @Override
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    @Override
+    public boolean contentTypeIsSet() {
+        return this.contentType.length() > 0;
+    }
+
+    @Override
+    public int getContentLength() {
+        return this.contentLength;
+    }
+
+    @Override
+    public void setContentLength(int contentLength) {
+        this.contentLength = contentLength;
+    }
+
+    @Override
+    public boolean contentLengthIsSet() {
+        return this.contentLength > 0;
+    }
+
+    @Override
     public String getBody() {
         return this.body;
     }
@@ -153,6 +229,11 @@ public class RequestObject implements Request {
     @Override
     public void setBody(String body) {
         this.body = body;
+    }
+
+    @Override
+    public boolean bodyIsSet() {
+        return this.body.length() > 0;
     }
 
     @Override
@@ -192,6 +273,10 @@ public class RequestObject implements Request {
                 Arrays.toString(this.acceptEncoding) +
                 "\nConnection: " +
                 this.connection +
+                "\nContent-Type: " +
+                this.contentType +
+                "\nContent-Length: " +
+                this .contentLength +
                 "\nBody: " +
                 this.body +
                 "\nValid: " +
