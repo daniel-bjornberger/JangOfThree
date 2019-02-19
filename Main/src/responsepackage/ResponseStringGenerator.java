@@ -25,7 +25,7 @@ public class ResponseStringGenerator {
 
 
 
-            builder.append("\nContent-Length: " + responseObject.getContentLength());
+            builder.append("\nContent-length: " + responseObject.getContentLength());
 
 
             if (responseObject.contentLanguageIsSet()) {

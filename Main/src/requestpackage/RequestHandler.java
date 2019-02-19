@@ -56,6 +56,7 @@ public class RequestHandler {
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
                     request.setValid(false);
+                    System.out.println("got to pdf switch");
                 case ".png":
                     response.setStatus("200");
                     response.setStatusMessage("OK");

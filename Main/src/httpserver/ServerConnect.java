@@ -125,11 +125,12 @@ public class ServerConnect extends Observable implements Runnable{
 
 
             // we parse the request with a string tokenizer
-            StringTokenizer parse = new StringTokenizer(input);
+            StringTokenizer parse = new StringTokenizer(requestString);
             String method = parse.nextToken().toUpperCase(); // we get the HTTP method of the client
             // we get file requested
             fileRequested = parse.nextToken().toLowerCase();
-
+            System.out.println("filerequested BLALA:" + fileRequested);
+            System.out.println("Response.getBody:" + response.getBody());
             // we support only GET and HEAD methods, we check
             if (!method.equals("GET")  &&  !method.equals("HEAD")) {
                 if (verbose) {
@@ -200,19 +201,19 @@ public class ServerConnect extends Observable implements Runnable{
                     //fileData = readFileData(file, fileLength);
 
                     // send HTTP Headers
-                   // out.println("HTTP/1.1 200 OK");
-                   // out.println("Server: Java HTTP Server from SSaurel : 1.0");
-                   // out.println("Date: " + new Date());
-                   // out.println("Content-type: " + content);
-                   // out.println("Content-length: " + fileLength);
-                    System.out.println("Sending response string...");
-                   out.write(responseString);
+                 //   out.println("HTTP/1.1 200 OK");
+                 //  out.println("Server: Java HTTP Server from SSaurel : 1.0");
+                 //   out.println("Date: " + new Date());
+                 //   out.println("Content-type: " + /*content*/"image/jpeg");
+                 //   out.println("Content-length: " + fileLength);
+                 //   System.out.println("Sending response string...");
+                   out.println(responseString);
+                out.println(); // blank line between headers and content, very important !
+                out.flush(); // flush character output stream buffer
                     System.out.println("Response String Sent:");
                 System.out.println("---------------------------------");
                 System.out.println(responseString);
                 System.out.println("---------------------------------");
-                    out.println(); // blank line between headers and content, very important !
-                    out.flush(); // flush character output stream buffer
 
                     dataOut.write(fileData, 0, fileLength);
                     dataOut.flush();

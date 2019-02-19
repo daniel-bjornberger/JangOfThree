@@ -2,6 +2,7 @@ package responsepackage;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 /**
  * @author Daniel Björnberger
@@ -37,11 +38,11 @@ public class ResponseObject implements Response {
 
     public ResponseObject() {
 
-        protocolVersion = "http/1.1";
+        protocolVersion = "HTTP/1.1";
         status = EMPTY_STRING;
         statusMessage = EMPTY_STRING;
         date = EMPTY_STRING;
-        server = "Java HTTP Server from Jang Of Three";
+        server = "Java HTTP Server from JangOfThree : 1.0";
         contentType = EMPTY_STRING;
         contentLength = 0;
         contentLanguage = EMPTY_STRING;
@@ -100,7 +101,9 @@ public class ResponseObject implements Response {
 
     @Override
     public void setDate() {
-        this.date = java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneOffset.UTC));
+        this.date = new Date().toString();
+        //this.date = java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneOffset.UTC));
+
     }
 
     @Override
