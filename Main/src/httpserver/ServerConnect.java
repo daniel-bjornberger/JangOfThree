@@ -18,10 +18,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Date;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.StringTokenizer;
+import java.util.*;
 
 // The tutorial can be found just here on the SSaurel's Blog : 
 // https://www.ssaurel.com/blog/create-a-simple-http-web-server-in-java
@@ -158,36 +155,41 @@ public class ServerConnect extends Observable implements Runnable{
 
             } else {
                 // GET or HEAD method
-                if (fileRequested.endsWith("/")) {
-                    fileRequested += DEFAULT_FILE;
-                }
+               // fileRequested =response.getBody();
+               // if (fileRequested.endsWith("/")) {
+               //     fileRequested += DEFAULT_FILE;
+               // }
 
-                    for (String format:staticFileHandler.getFormats()){
-                        if (response.getContentType().equals(format)){
+                File file = new File(WEB_ROOT, fileRequested);
 
-                        }
-                    }
-
-                    File file = new File(WEB_ROOT, fileRequested);
-
-                    int fileLength =  response.getBody().getBytes().length;
+                    int fileLength;
                // String content = getContentType(fileRequested);
-
-                //OM STATISK FIL:
-                for (String format:staticFileHandler.getFormats()){
-                    if (response.getContentType().equals(format)){
-                        System.out.println();
-                        file = new File(WEB_ROOT,response.getBody());
-                        fileLength = (int) file.length();
-                    }
+//                boolean isFile= false;
+//                //OM STATISK FIL:
+//                for (String format:staticFileHandler.getFormats()){
+//                    if (response.getContentType().equals(format)){
+//                        isFile=true;
+//                    }
+//                }
+                boolean isFile = Arrays.stream(staticFileHandler.getFormats()).filter(p -> p.equals(response.getContentType())).findFirst().isPresent();
+                byte[] fileData;
+                if (isFile){
+                    file = new File(WEB_ROOT,response.getBody());
+                    fileLength = (int) file.length();
+                    fileData = readFileData(file, fileLength);
                 }
+                else{
+                    fileData = response.getBody().getBytes();
+                    fileLength =  response.getBody().getBytes().length;
+                }
+
 
 
 
                 if (method.equals("GET")) {
 
                     // GET method so we return content
-                     byte[] fileData = readFileData(file, fileLength);
+                    // byte[] fileData = readFileData(file, fileLength);
 
                     // send HTTP Headers
                    // out.println("HTTP/1.1 200 OK");
