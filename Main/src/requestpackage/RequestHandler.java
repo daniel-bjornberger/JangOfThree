@@ -64,7 +64,7 @@ public class RequestHandler {
                 case ".jpg":
                     response.setStatus("200");
                     response.setStatusMessage("OK");
-                    response.setContentType("image/jpg");
+                    response.setContentType("image/jpeg");
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
                     request.setValid(false);
