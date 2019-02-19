@@ -45,7 +45,7 @@ public class ResponseObject implements Response {
         contentType = EMPTY_STRING;
         contentLength = 0;
         contentLanguage = EMPTY_STRING;
-        connection = EMPTY_STRING;
+        connection = "keep-alive";
         body = EMPTY_STRING;
 
     }
