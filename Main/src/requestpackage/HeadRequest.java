@@ -28,7 +28,7 @@ public class HeadRequest extends RequestObject {
 
         return  "Method: HEAD" +
                 "\nUrl: " +
-                this.getUrl() +
+                this.getFullUrl() +
                 "\nProtocol Version: " +
                 this.getProtocolVersion() +
                 "\nHost: " +

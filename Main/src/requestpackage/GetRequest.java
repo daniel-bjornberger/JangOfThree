@@ -26,9 +26,9 @@ public class GetRequest extends RequestObject {
     @Override
     public String toString() {
 
-        return  "Method: GET" +
+        String returnString = "Method: GET" +
                 "\nUrl: " +
-                this.getUrl() +
+                this.getFullUrl() +
                 "\nProtocol Version: " +
                 this.getProtocolVersion() +
                 "\nHost: " +
@@ -45,6 +45,17 @@ public class GetRequest extends RequestObject {
                 this.getConnection() +
                 "\nValid: " +
                 this.isValid();
+
+        for (String name: this.getParsedData().keySet()){
+
+            String key = name.toString();
+
+            String value = this.getParsedData().get(name).toString();
+
+            returnString += (key + " " + value);
+
+
+        }
 
     }
 

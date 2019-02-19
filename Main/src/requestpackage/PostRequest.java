@@ -79,6 +79,27 @@ public class PostRequest extends RequestObject{
 
 
 
+    @Override
+    public void setParsedData() {
+
+        this.setBaseUrl(this.getFullUrl());
+
+        if (this.bodyIsSet()) {
+
+            String[] data = this.getBody().split("=&");
+
+            for (int i = 0; i < data.length; i += 2) {
+
+                this.getParsedData().put(data[i], data[i + 1]);
+
+            }
+
+        }
+
+    }
+
+
+
 
 
 
@@ -92,7 +113,7 @@ public class PostRequest extends RequestObject{
 
         return  "Method: POST" +
                 "\nUrl: " +
-                this.getUrl() +
+                this.getFullUrl() +
                 "\nProtocol Version: " +
                 this.getProtocolVersion() +
                 "\nHost: " +
