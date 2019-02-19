@@ -1,6 +1,6 @@
 package requestpackage;
 
-import requestpackage.MethodEnum.Method;
+
 import static java.util.Arrays.copyOfRange;
 
 
@@ -8,7 +8,7 @@ public class TestClass {
 
     public static void main (String[] args) {
 
-        RequestObject requestObject = new RequestObject();
+
 
 
         /*String input = "POST /cgi-bin/process.cgi HTTP/1.1\n" +
@@ -41,51 +41,55 @@ public class TestClass {
 
         String[] inputRowByRow = input.split("\\n");
 
-        //System.out.println(inputRowByRow.length);
+        String[] currentRow = inputRowByRow[0].split("[,\\s]+");
+
+        RequestObject requestObject;
 
 
-        if (inputRowByRow[inputRowByRow.length - 2].length() == 0) {
+        switch (currentRow[0]) {
 
-            //System.out.println("Hej!");
+            case "GET":
+                requestObject = new GetRequest();
+                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setProtocolVersion(currentRow[2].toLowerCase());
+                break;
 
-            requestObject.setBody(inputRowByRow[inputRowByRow.length - 1]);
+            case "HEAD":
+                requestObject = new HeadRequest();
+                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setProtocolVersion(currentRow[2].toLowerCase());
+                break;
 
-            //inputRowByRow = copyOfRange(inputRowByRow, 0, inputRowByRow.length - 2);
+            case "POST":
+                requestObject = new PostRequest();
+                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setProtocolVersion(currentRow[2].toLowerCase());
+                break;
+
+            default:
+                requestObject = new NotImplementedRequest();
+                break;
 
         }
 
-        //System.out.println(inputRowByRow.length);
 
 
-        String[] currentRow;
+        /*if (inputRowByRow[inputRowByRow.length - 2].length() == 0) {
+
+            requestObject.setBody(inputRowByRow[inputRowByRow.length - 1]);
+
+        }*/
 
 
-        for (String s : inputRowByRow) {
 
-            currentRow = s.split("[,\\s]+");
 
-            System.out.println(currentRow[0]);
+
+        for (int i = 1; i < inputRowByRow.length; i++) {
+
+            currentRow = inputRowByRow[i].split("[,\\s]+");
 
 
             switch (currentRow[0]) {
-
-                case "GET":
-                    requestObject.setMethod(Method.GET);
-                    requestObject.setUrl(currentRow[1].toLowerCase());
-                    requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                    break;
-
-                case "HEAD":
-                    requestObject.setMethod(Method.HEAD);
-                    requestObject.setUrl(currentRow[1].toLowerCase());
-                    requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                    break;
-
-                case "POST":
-                    requestObject.setMethod(Method.POST);
-                    requestObject.setUrl(currentRow[1].toLowerCase());
-                    requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                    break;
 
                 case "Host:":
                     requestObject.setHost(currentRow[1].toLowerCase());
@@ -117,7 +121,10 @@ public class TestClass {
 
                 case "Content-Length:":
                     requestObject.setContentLength(Integer.valueOf(currentRow[1]));
-                    System.out.println(currentRow[1]);
+
+                    if (requestObject.getContentLength() > 0) {
+                        requestObject.setBody(inputRowByRow[inputRowByRow.length - 1]);
+                    }
                     break;
 
                 default:

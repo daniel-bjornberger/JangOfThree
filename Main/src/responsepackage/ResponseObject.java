@@ -6,7 +6,7 @@ import java.time.ZonedDateTime;
 /**
  * @author Daniel Björnberger
  */
-public class ResponseObject implements Response {
+public abstract class ResponseObject implements Response {
 
 
     private String protocolVersion;
