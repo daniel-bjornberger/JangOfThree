@@ -34,6 +34,7 @@ public class RequestHandler {
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
                     request.setValid(false);
+                    break;
                 case ".css":
                     response.setStatus("200");
                     response.setStatusMessage("OK");
@@ -41,6 +42,7 @@ public class RequestHandler {
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
                     request.setValid(false);
+                    break;
                 case ".js":
                     response.setStatus("200");
                     response.setStatusMessage("OK");
@@ -48,6 +50,7 @@ public class RequestHandler {
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
                     request.setValid(false);
+                    break;
 
                 case ".pdf":
                     response.setStatus("200");
@@ -57,6 +60,7 @@ public class RequestHandler {
                     response.setContentLength(response.getBody().length());
                     request.setValid(false);
                     System.out.println("got to pdf switch");
+                    break;
                 case ".png":
                     response.setStatus("200");
                     response.setStatusMessage("OK");
@@ -64,6 +68,7 @@ public class RequestHandler {
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
                     request.setValid(false);
+                    break;
                 case ".jpg":
                     response.setStatus("200");
                     response.setStatusMessage("OK");
@@ -71,10 +76,9 @@ public class RequestHandler {
                     System.out.println("REQUEST FULL URL:"+ request.getFullUrl());
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
-
-
                     request.setValid(false);
-                    ;
+                    break;
+
             }
             response.setContentLength((int)(new File(new File("."),response.getBody()).length()));
 
