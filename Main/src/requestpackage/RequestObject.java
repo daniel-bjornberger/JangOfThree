@@ -256,16 +256,25 @@ public abstract class RequestObject implements Request {
 
         String url = this.getFullUrl();
 
+        System.out.println(url);
+
         String[] data = url.split("\\?", 2);
+
+        System.out.println(data.length);
 
         this.setBaseUrl(data[0]);
 
-        String[] data2 = data[1].split("[=&]+");
+
+        if (data.length == 2) {
+
+            String[] data2 = data[1].split("[=&]+");
 
 
-        for (int i = 0; i < data2.length; i += 2) {
+            for (int i = 0; i < data2.length; i += 2) {
 
-            this.parsedData.put(data2[i], data2[i + 1]);
+                this.parsedData.put(data2[i], data2[i + 1]);
+
+            }
 
         }
 
