@@ -1,6 +1,10 @@
 package requestpackage;
 
 public class staticFileHandler {
+    public static String[] getFormats() {
+        return formats;
+    }
+
     private static String[] formats= {
             ".html",
             ".css",
@@ -13,7 +17,7 @@ public class staticFileHandler {
 
     public static String detect(Request request){
         for(String format: formats) {
-            if (request.getUrl().endsWith(format)) {
+            if (request.getFullUrl().endsWith(format)) {
                 return format;
             }
         }

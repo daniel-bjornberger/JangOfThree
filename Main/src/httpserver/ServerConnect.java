@@ -2,6 +2,7 @@ package httpserver;
 
 import requestpackage.Request;
 import requestpackage.RequestHandler;
+import requestpackage.staticFileHandler;
 import responsepackage.Response;
 import responsepackage.ResponseObject;
 import responsepackage.ResponseStringGenerator;
@@ -161,28 +162,49 @@ public class ServerConnect extends Observable implements Runnable{
                     fileRequested += DEFAULT_FILE;
                 }
 
-                File file = new File(WEB_ROOT, fileRequested);
-                int fileLength = (int) file.length();
-                String content = getContentType(fileRequested);
+                    for (String format:staticFileHandler.getFormats()){
+                        if (response.getContentType().equals(format)){
 
-                if (method.equals("GET")) { // GET method so we return content
-                    byte[] fileData = readFileData(file, fileLength);
+                        }
+                    }
+
+                    File file = new File(WEB_ROOT, fileRequested);
+
+                    int fileLength =  response.getBody().getBytes().length;
+               // String content = getContentType(fileRequested);
+
+                //OM STATISK FIL:
+                for (String format:staticFileHandler.getFormats()){
+                    if (response.getContentType().equals(format)){
+                        System.out.println();
+                        file = new File(WEB_ROOT,response.getBody());
+                        fileLength = (int) file.length();
+                    }
+                }
+
+
+
+                if (method.equals("GET")) {
+
+                    // GET method so we return content
+                     byte[] fileData = readFileData(file, fileLength);
 
                     // send HTTP Headers
-                    out.println("HTTP/1.1 200 OK");
-                    out.println("Server: Java HTTP Server from SSaurel : 1.0");
-                    out.println("Date: " + new Date());
-                    out.println("Content-type: " + content);
-                    out.println("Content-length: " + fileLength);
+                   // out.println("HTTP/1.1 200 OK");
+                   // out.println("Server: Java HTTP Server from SSaurel : 1.0");
+                   // out.println("Date: " + new Date());
+                   // out.println("Content-type: " + content);
+                   // out.println("Content-length: " + fileLength);
+                   out.write(responseString);
                     out.println(); // blank line between headers and content, very important !
-                    out.flush(); // flush character output stream buffer
+                  //  out.flush(); // flush character output stream buffer
 
                     dataOut.write(fileData, 0, fileLength);
                     dataOut.flush();
                 }
 
                 if (verbose) {
-                    System.out.println("File " + fileRequested + " of type " + content + " returned");
+                  //  System.out.println("File " + fileRequested + " of type " + content + " returned");
                 }
 
             }

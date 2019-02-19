@@ -25,20 +25,65 @@ public class RequestHandler {
             String fileType =staticFileHandler.detect(request);
                     System.out.println( fileType + " file requested.");
             switch (fileType){
-                case "html":
+                case ".html":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("text/html");
+                    response.setBody(request.getFullUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                case ".css":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("text/css");
+                    response.setBody(request.getFullUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                case ".js":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("text/javascript");
+                    response.setBody(request.getFullUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
 
-                    response.setDate();
+                case ".pdf":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("application/pdf");
+                    response.setBody(request.getFullUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                case ".png":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("image/png");
+                    response.setBody(request.getFullUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                case ".jpg":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("image/jpg");
+                    response.setBody(request.getFullUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                    ;
             }
+
+
+
+            System.out.println(response);
                 return  response;
             }
             if(request.isValid()){
                 System.out.println("No static file requested.");
                 ServiceHandler serviceHandler = new ServiceHandler("out/artifacts/lib/");
                 System.out.println("Services found: "+ serviceHandler.toString());
-                System.out.println("REQUEST URL IS: " + request.getUrl());
+                System.out.println("REQUEST URL IS: " + request.getFullUrl());
                 if (serviceHandler.getServices() != null){
                     for(Service service:serviceHandler.getServices()){
-                        if (service.getClass().getAnnotation(Adress.class).value().equals(request.getUrl()))
+                        if (service.getClass().getAnnotation(Adress.class).value().equals(request.getFullUrl()))
                         service.execute(request, response);
                     }
                 }
