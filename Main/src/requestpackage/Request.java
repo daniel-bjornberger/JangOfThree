@@ -1,15 +1,24 @@
 package requestpackage;
 
+import java.util.HashMap;
+
 /**
  * @author Daniel Björnberger
  */
 public interface Request {
 
-    String getUrl();
+    String getFullUrl();
 
-    void setUrl(String url);
+    void setFullUrl(String fullUrl);
 
-    boolean urlIsSet();
+    boolean fullUrlIsSet();
+
+
+    String getBaseUrl();
+
+    void setBaseUrl(String baseUrl);
+
+    boolean baseUrlIsSet();
 
 
     String getProtocolVersion();
@@ -85,6 +94,13 @@ public interface Request {
     boolean isValid();
 
     void setValid(boolean valid);
+
+
+    HashMap<String, String> getParsedData();
+
+    void setParsedData();
+
+    boolean parsedDataIsSet();
 
 
 }

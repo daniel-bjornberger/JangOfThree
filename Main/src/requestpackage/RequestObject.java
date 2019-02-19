@@ -1,12 +1,16 @@
 package requestpackage;
 
+import java.util.HashMap;
+
 /**
  * @author Daniel Björnberger
  */
 public abstract class RequestObject implements Request {
 
 
-    private String url;
+    private String fullUrl;
+
+    private String baseUrl;
 
     private String protocolVersion;
 
@@ -24,6 +28,8 @@ public abstract class RequestObject implements Request {
 
     private boolean valid;
 
+    private HashMap<String, String> parsedData;
+
 
     static final String[] EMPTY_ARRAY = new String[0];
 
@@ -33,7 +39,8 @@ public abstract class RequestObject implements Request {
 
     public RequestObject() {
 
-        url = EMPTY_STRING;
+        fullUrl = EMPTY_STRING;
+        baseUrl = EMPTY_STRING;
         protocolVersion = EMPTY_STRING;
         host = EMPTY_STRING;
         accept = EMPTY_ARRAY;
@@ -42,24 +49,42 @@ public abstract class RequestObject implements Request {
         acceptEncoding = EMPTY_ARRAY;
         connection = EMPTY_STRING;
         valid = true;
+        parsedData = new HashMap<>();
 
     }
 
 
     @Override
-    public String getUrl() {
-        return this.url;
+    public String getFullUrl() {
+        return this.fullUrl;
     }
 
     @Override
-    public void setUrl(String url) {
-        this.url = url;
+    public void setFullUrl(String fullUrl) {
+        this.fullUrl = fullUrl;
     }
 
     @Override
-    public boolean urlIsSet() {
-        return this.url.length() > 0;
+    public boolean fullUrlIsSet() {
+        return this.fullUrl.length() > 0;
     }
+
+
+    @Override
+    public String getBaseUrl() {
+        return this.baseUrl;
+    }
+
+    @Override
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
+    @Override
+    public boolean baseUrlIsSet() {
+        return this.baseUrl.length() > 0;
+    }
+
 
     @Override
     public String getProtocolVersion() {
@@ -221,7 +246,35 @@ public abstract class RequestObject implements Request {
         this.valid = valid;
     }
 
+    @Override
+    public HashMap<String, String> getParsedData() {
+        return this.parsedData;
+    }
 
+    @Override
+    public void setParsedData() {
+
+        String url = this.getFullUrl();
+
+        String[] data = url.split("\\?", 2);
+
+        this.setBaseUrl(data[0]);
+
+        String[] data2 = data[1].split("=&");
+
+
+        for (int i = 0; i < data2.length; i += 2) {
+
+            this.parsedData.put(data2[i], data2[i + 1]);
+
+        }
+
+    }
+
+    @Override
+    public boolean parsedDataIsSet() {
+        return !this.parsedData.isEmpty();
+    }
 
 
 
