@@ -3,6 +3,8 @@ package httpserver;
 import requestpackage.Request;
 import requestpackage.RequestHandler;
 import responsepackage.Response;
+import responsepackage.ResponseObject;
+import responsepackage.ResponseStringGenerator;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -111,9 +113,10 @@ public class ServerConnect extends Observable implements Runnable{
             requestString = stringBuilder.toString();
 
             RequestHandler requestHandler = new RequestHandler();
-
             Response response= requestHandler.doEverything(requestString);
-
+            ResponseStringGenerator rsg = new ResponseStringGenerator();
+            String responseString= rsg.createResponseString((ResponseObject) response);
+            System.out.println(responseString);
            // setChanged();
             //notifyObservers(requestString);
            // System.out.println(requestString);
@@ -193,6 +196,8 @@ public class ServerConnect extends Observable implements Runnable{
 
         } catch (IOException ioe) {
             System.err.println("Server error : " + ioe);
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             try {
                 in.close();

@@ -1,6 +1,7 @@
 package requestpackage;
 
 import httpserver.ServerConnect;
+import loadservices.Adress;
 import loadservices.Service;
 import loadservices.ServiceHandler;
 import responsepackage.Response;
@@ -20,17 +21,25 @@ public class RequestHandler {
             Response response = new ResponseObject();
 
 
-            if (staticFileHandler.detect(request)!=null){
-                System.out.println(staticFileHandler.detect(request) + " file requested.");
+        if (staticFileHandler.detect(request)!=null){
+            String fileType =staticFileHandler.detect(request);
+                    System.out.println( fileType + " file requested.");
+            switch (fileType){
+                case "html":
+
+                    response.setDate();
+            }
+                return  response;
             }
             if(request.isValid()){
                 System.out.println("No static file requested.");
                 ServiceHandler serviceHandler = new ServiceHandler("out/artifacts/lib/");
                 System.out.println("Services found: "+ serviceHandler.toString());
-
+                System.out.println("REQUEST URL IS: " + request.getUrl());
                 if (serviceHandler.getServices() != null){
                     for(Service service:serviceHandler.getServices()){
-                        // service.execute(request, );
+                        if (service.getClass().getAnnotation(Adress.class).value().equals(request.getUrl()))
+                        service.execute(request, response);
                     }
                 }
             }
