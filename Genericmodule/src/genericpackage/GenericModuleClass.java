@@ -23,7 +23,11 @@ public class GenericModuleClass implements Service {
     public void execute(Request request, Response response) {
         //if request.getUrl().
         System.out.println("KÖRDES WHOH");
-        response.setDate();
+        response.setStatus("200");
+        response.setStatusMessage("OK");
+        response.setContentType("text/plain");
+        response.setBody("Generic Module Class fungerar excellent!!!!");
+        response.setContentLength(response.getBody().length());
     }
 
     @Override

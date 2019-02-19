@@ -1,6 +1,10 @@
 package requestpackage;
 
 public class staticFileHandler {
+    public static String[] getFormats() {
+        return formats;
+    }
+
     private static String[] formats= {
             ".html",
             ".css",
