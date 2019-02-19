@@ -1,15 +1,10 @@
 package requestpackage;
 
-import requestpackage.MethodEnum.Method;
-import java.util.Arrays;
-
 /**
  * @author Daniel Björnberger
  */
 public class RequestObject implements Request {
 
-
-    private Method method;
 
     private String url;
 
@@ -27,24 +22,17 @@ public class RequestObject implements Request {
 
     private String connection;
 
-    private String contentType;
-
-    private int contentLength;
-
-    private String body;
-
     private boolean valid;
 
 
-    private static final String[] EMPTY_ARRAY = new String[0];
+    static final String[] EMPTY_ARRAY = new String[0];
 
-    private static final String EMPTY_STRING = "";
+    static final String EMPTY_STRING = "";
 
 
 
     public RequestObject() {
 
-        method = Method.OTHER;
         url = EMPTY_STRING;
         protocolVersion = EMPTY_STRING;
         host = EMPTY_STRING;
@@ -53,23 +41,10 @@ public class RequestObject implements Request {
         acceptCharset = EMPTY_ARRAY;
         acceptEncoding = EMPTY_ARRAY;
         connection = EMPTY_STRING;
-        contentType = EMPTY_STRING;
-        contentLength = 0;
-        body = EMPTY_STRING;
         valid = true;
 
     }
 
-
-    @Override
-    public Method getMethod() {
-        return this.method;
-    }
-
-    @Override
-    public void setMethod(Method method) {
-        this.method = method;
-    }
 
     @Override
     public String getUrl() {
@@ -193,47 +168,47 @@ public class RequestObject implements Request {
 
     @Override
     public String getContentType() {
-        return this.contentType;
+        return EMPTY_STRING;
     }
 
     @Override
     public void setContentType(String contentType) {
-        this.contentType = contentType;
+
     }
 
     @Override
     public boolean contentTypeIsSet() {
-        return this.contentType.length() > 0;
+        return false;
     }
 
     @Override
     public int getContentLength() {
-        return this.contentLength;
+        return 0;
     }
 
     @Override
     public void setContentLength(int contentLength) {
-        this.contentLength = contentLength;
+
     }
 
     @Override
     public boolean contentLengthIsSet() {
-        return this.contentLength > 0;
+        return false;
     }
 
     @Override
     public String getBody() {
-        return this.body;
+        return EMPTY_STRING;
     }
 
     @Override
     public void setBody(String body) {
-        this.body = body;
+
     }
 
     @Override
     public boolean bodyIsSet() {
-        return this.body.length() > 0;
+        return false;
     }
 
     @Override
@@ -249,39 +224,6 @@ public class RequestObject implements Request {
 
 
 
-    /** The method 'toString' is only for testing purpose.
-     * @return The method returns a String representation of a RequestObject.
-     */
-    @Override
-    public String toString() {
 
-        return  "Method: " +
-                this.method +
-                "\nUrl: " +
-                this.url +
-                "\nProtocol Version: " +
-                this.protocolVersion +
-                "\nHost: " +
-                this.host +
-                "\nAccept: " +
-                Arrays.toString(this.accept) +
-                "\nAccept-Language: " +
-                Arrays.toString(this.acceptLanguage) +
-                "\nAccept-Charset: " +
-                Arrays.toString(this.acceptCharset) +
-                "\nAccept-Encoding: " +
-                Arrays.toString(this.acceptEncoding) +
-                "\nConnection: " +
-                this.connection +
-                "\nContent-Type: " +
-                this.contentType +
-                "\nContent-Length: " +
-                this .contentLength +
-                "\nBody: " +
-                this.body +
-                "\nValid: " +
-                this.valid;
-
-    }
 
 }

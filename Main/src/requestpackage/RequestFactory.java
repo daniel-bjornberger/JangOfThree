@@ -12,9 +12,28 @@ public class RequestFactory {
     public RequestObject createRequestObject(String input) {
 
 
+        String[] inputRowByRow = input.split("\\n");
+
+        String[] currentRow = inputRowByRow[0].split("[,\\s]+");
+
+
+        switch (currentRow[0]) {
+
+
+
+        }
+
+
+
         RequestObject requestObject = new RequestObject();
 
-        String[] inputRowByRow = input.split("\\n");
+
+
+
+
+
+
+
 
 
         if (inputRowByRow[inputRowByRow.length - 2].length() == 0) {
@@ -24,17 +43,17 @@ public class RequestFactory {
         }
 
 
-        String[] currentRow;
 
 
-        for (String s : inputRowByRow) {
 
-            currentRow = s.split("[,\\s]+");
+        for (int i = 1; i < inputRowByRow.length; i++) {
+
+            currentRow = inputRowByRow[i].split("[,\\s]+");
 
 
             switch (currentRow[0]) {
 
-                case "GET":
+                /*case "GET":
                     requestObject.setMethod(Method.GET);
                     requestObject.setUrl(currentRow[1].toLowerCase());
                     requestObject.setProtocolVersion(currentRow[2].toLowerCase());
@@ -50,7 +69,7 @@ public class RequestFactory {
                     requestObject.setMethod(Method.POST);
                     requestObject.setUrl(currentRow[1].toLowerCase());
                     requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                    break;
+                    break;*/
 
                 case "Host:":
                     requestObject.setHost(currentRow[1].toLowerCase());

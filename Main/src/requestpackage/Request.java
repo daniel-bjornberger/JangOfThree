@@ -1,16 +1,9 @@
 package requestpackage;
 
-import requestpackage.MethodEnum.Method;
-
 /**
  * @author Daniel Björnberger
  */
 public interface Request {
-
-    Method getMethod();
-
-    void setMethod(Method method);
-
 
     String getUrl();
 
