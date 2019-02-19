@@ -25,10 +25,55 @@ public class RequestHandler {
             String fileType =staticFileHandler.detect(request);
                     System.out.println( fileType + " file requested.");
             switch (fileType){
-                case "html":
+                case ".html":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("text/html");
+                    response.setBody(request.getUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                case ".css":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("text/css");
+                    response.setBody(request.getUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                case ".js":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("text/javascript");
+                    response.setBody(request.getUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
 
-                    response.setDate();
+                case ".pdf":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("application/pdf");
+                    response.setBody(request.getUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                case ".png":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("image/png");
+                    response.setBody(request.getUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                case ".jpg":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("image/jpg");
+                    response.setBody(request.getUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                    ;
             }
+
+
+
+            System.out.println(response);
                 return  response;
             }
             if(request.isValid()){
