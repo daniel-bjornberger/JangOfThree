@@ -26,7 +26,7 @@ public class GetRequest extends RequestObject {
     @Override
     public String toString() {
 
-        String returnString = "Method: GET" +
+        StringBuilder returnString = new StringBuilder("Method: GET" +
                 "\nUrl: " +
                 this.getFullUrl() +
                 "\nProtocol Version: " +
@@ -44,18 +44,15 @@ public class GetRequest extends RequestObject {
                 "\nConnection: " +
                 this.getConnection() +
                 "\nValid: " +
-                this.isValid();
+                this.isValid() + "\n");
 
         for (String name: this.getParsedData().keySet()){
 
-            String key = name.toString();
-
-            String value = this.getParsedData().get(name).toString();
-
-            returnString += (key + " " + value);
-
+            returnString.append(name).append(": ").append(this.getParsedData().get(name));
 
         }
+
+        return returnString.toString();
 
     }
 

@@ -22,20 +22,23 @@ public class RequestFactory {
 
             case "GET":
                 requestObject = new GetRequest();
-                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
+                requestObject.setParsedData();
                 break;
 
             case "HEAD":
                 requestObject = new HeadRequest();
-                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
+                requestObject.setParsedData();
                 break;
 
             case "POST":
                 requestObject = new PostRequest();
-                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
+                requestObject.setParsedData();
                 break;
 
             default:

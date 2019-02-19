@@ -111,7 +111,7 @@ public class PostRequest extends RequestObject{
     @Override
     public String toString() {
 
-        return  "Method: POST" +
+        StringBuilder returnString = new StringBuilder("Method: POST" +
                 "\nUrl: " +
                 this.getFullUrl() +
                 "\nProtocol Version: " +
@@ -135,7 +135,15 @@ public class PostRequest extends RequestObject{
                 "\nBody: " +
                 this.body +
                 "\nValid: " +
-                this.isValid();
+                this.isValid());
+
+        for (String name: this.getParsedData().keySet()){
+
+            returnString.append(name).append(": ").append(this.getParsedData().get(name));
+
+        }
+
+        return returnString.toString();
 
     }
 

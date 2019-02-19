@@ -26,7 +26,7 @@ public class HeadRequest extends RequestObject {
     @Override
     public String toString() {
 
-        return  "Method: HEAD" +
+        StringBuilder returnString = new StringBuilder("Method: HEAD" +
                 "\nUrl: " +
                 this.getFullUrl() +
                 "\nProtocol Version: " +
@@ -44,7 +44,15 @@ public class HeadRequest extends RequestObject {
                 "\nConnection: " +
                 this.getConnection() +
                 "\nValid: " +
-                this.isValid();
+                this.isValid() + "\n");
+
+        for (String name: this.getParsedData().keySet()){
+
+            returnString.append(name).append(": ").append(this.getParsedData().get(name));
+
+        }
+
+        return returnString.toString();
 
     }
 
