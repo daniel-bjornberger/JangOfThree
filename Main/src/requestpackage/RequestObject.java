@@ -3,7 +3,7 @@ package requestpackage;
 /**
  * @author Daniel Björnberger
  */
-public class RequestObject implements Request {
+public abstract class RequestObject implements Request {
 
 
     private String url;

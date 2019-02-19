@@ -1,6 +1,5 @@
 package requestpackage;
 
-import requestpackage.MethodEnum.Method;
 import static java.util.Arrays.copyOfRange;
 
 /**
@@ -16,31 +15,42 @@ public class RequestFactory {
 
         String[] currentRow = inputRowByRow[0].split("[,\\s]+");
 
+        RequestObject requestObject;
+
 
         switch (currentRow[0]) {
 
+            case "GET":
+                requestObject = new GetRequest();
+                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setProtocolVersion(currentRow[2].toLowerCase());
+                break;
 
+            case "HEAD":
+                requestObject = new HeadRequest();
+                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setProtocolVersion(currentRow[2].toLowerCase());
+                break;
+
+            case "POST":
+                requestObject = new PostRequest();
+                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setProtocolVersion(currentRow[2].toLowerCase());
+                break;
+
+            default:
+                requestObject = new NotImplementedRequest();
+                break;
 
         }
 
 
 
-        RequestObject requestObject = new RequestObject();
-
-
-
-
-
-
-
-
-
-
-        if (inputRowByRow[inputRowByRow.length - 2].length() == 0) {
+        /*if (inputRowByRow[inputRowByRow.length - 2].length() == 0) {
 
             requestObject.setBody(inputRowByRow[inputRowByRow.length - 1]);
 
-        }
+        }*/
 
 
 
@@ -52,24 +62,6 @@ public class RequestFactory {
 
 
             switch (currentRow[0]) {
-
-                /*case "GET":
-                    requestObject.setMethod(Method.GET);
-                    requestObject.setUrl(currentRow[1].toLowerCase());
-                    requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                    break;
-
-                case "HEAD":
-                    requestObject.setMethod(Method.HEAD);
-                    requestObject.setUrl(currentRow[1].toLowerCase());
-                    requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                    break;
-
-                case "POST":
-                    requestObject.setMethod(Method.POST);
-                    requestObject.setUrl(currentRow[1].toLowerCase());
-                    requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                    break;*/
 
                 case "Host:":
                     requestObject.setHost(currentRow[1].toLowerCase());
@@ -101,6 +93,10 @@ public class RequestFactory {
 
                 case "Content-Length:":
                     requestObject.setContentLength(Integer.valueOf(currentRow[1]));
+
+                    if (requestObject.getContentLength() > 0) {
+                        requestObject.setBody(inputRowByRow[inputRowByRow.length - 1]);
+                    }
                     break;
 
                 default:
@@ -113,6 +109,8 @@ public class RequestFactory {
         return requestObject;
 
     }
+
+
 
 
     private String[] stringArrayToLowerCase(String[] stringArray) {
