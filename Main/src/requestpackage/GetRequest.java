@@ -16,10 +16,6 @@ public class GetRequest extends RequestObject {
 
 
 
-
-
-
-
     /** The method 'toString' is only for testing purpose.
      * @return The method returns a String representation of a RequestObject.
      */
@@ -27,8 +23,10 @@ public class GetRequest extends RequestObject {
     public String toString() {
 
         StringBuilder returnString = new StringBuilder("Method: GET" +
-                "\nUrl: " +
+                "\nFull Url: " +
                 this.getFullUrl() +
+                "\nBase Url: "+
+                this.getBaseUrl() +
                 "\nProtocol Version: " +
                 this.getProtocolVersion() +
                 "\nHost: " +
@@ -48,7 +46,7 @@ public class GetRequest extends RequestObject {
 
         for (String name: this.getParsedData().keySet()){
 
-            returnString.append(name).append(": ").append(this.getParsedData().get(name));
+            returnString.append(name).append(": ").append(this.getParsedData().get(name)).append("\n");
 
         }
 

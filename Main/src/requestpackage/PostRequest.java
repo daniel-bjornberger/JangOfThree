@@ -26,12 +26,6 @@ public class PostRequest extends RequestObject{
     }
 
 
-
-
-
-
-
-
     @Override
     public String getContentType() {
         return this.contentType;
@@ -78,7 +72,6 @@ public class PostRequest extends RequestObject{
     }
 
 
-
     @Override
     public void setParsedData() {
 
@@ -86,7 +79,7 @@ public class PostRequest extends RequestObject{
 
         if (this.bodyIsSet()) {
 
-            String[] data = this.getBody().split("=&");
+            String[] data = this.getBody().split("[=&]+");
 
             for (int i = 0; i < data.length; i += 2) {
 
@@ -100,13 +93,8 @@ public class PostRequest extends RequestObject{
 
 
 
-
-
-
-
-
     /** The method 'toString' is only for testing purpose.
-            * @return The method returns a String representation of a RequestObject.
+     * @return The method returns a String representation of a RequestObject.
      */
     @Override
     public String toString() {
@@ -135,11 +123,11 @@ public class PostRequest extends RequestObject{
                 "\nBody: " +
                 this.body +
                 "\nValid: " +
-                this.isValid());
+                this.isValid() + "\n");
 
         for (String name: this.getParsedData().keySet()){
 
-            returnString.append(name).append(": ").append(this.getParsedData().get(name));
+            returnString.append(name).append(": ").append(this.getParsedData().get(name)).append("\n");
 
         }
 

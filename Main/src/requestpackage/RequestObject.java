@@ -260,7 +260,7 @@ public abstract class RequestObject implements Request {
 
         this.setBaseUrl(data[0]);
 
-        String[] data2 = data[1].split("=&");
+        String[] data2 = data[1].split("[=&]+");
 
 
         for (int i = 0; i < data2.length; i += 2) {

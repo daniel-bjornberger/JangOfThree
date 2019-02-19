@@ -16,10 +16,6 @@ public class HeadRequest extends RequestObject {
 
 
 
-
-
-
-
     /** The method 'toString' is only for testing purpose.
      * @return The method returns a String representation of a RequestObject.
      */
@@ -29,6 +25,8 @@ public class HeadRequest extends RequestObject {
         StringBuilder returnString = new StringBuilder("Method: HEAD" +
                 "\nUrl: " +
                 this.getFullUrl() +
+                "\nBase Url: "+
+                this.getBaseUrl() +
                 "\nProtocol Version: " +
                 this.getProtocolVersion() +
                 "\nHost: " +
@@ -48,7 +46,7 @@ public class HeadRequest extends RequestObject {
 
         for (String name: this.getParsedData().keySet()){
 
-            returnString.append(name).append(": ").append(this.getParsedData().get(name));
+            returnString.append(name).append(": ").append(this.getParsedData().get(name)).append("\n");
 
         }
 

@@ -13,6 +13,13 @@ public class NotImplementedRequest extends RequestObject {
     }
 
 
+    @Override
+    public void setParsedData() {
+
+    }
+
+
+
     /** The method 'toString' is only for testing purpose.
      * @return The method returns a String representation of a RequestObject.
      */

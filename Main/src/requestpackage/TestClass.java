@@ -21,7 +21,20 @@ public class TestClass {
                 "Connection: Keep-Alive\n\nBody-Body-Body..........";*/
 
 
-        String input = "POST /foo.php HTTP/1.1\n" +
+        String input = "GET /foo.php?first_name=John&last_name=Doe&action=Submit HTTP/1.1\n" +
+                "Host: localhost\n" +
+                "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5 (.NET CLR 3.5.30729)\n" +
+                "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n" +
+                "Accept-Language: en-us,en;q=0.5\n" +
+                "Accept-Encoding: gzip,deflate\n" +
+                "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n" +
+                "Keep-Alive: 300\n" +
+                "Connection: keep-alive\n" +
+                "Referer: http://localhost/test.php\n";
+
+
+
+        input = "POST /foo.php HTTP/1.1\n" +
                 "Host: localhost\n" +
                 "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5 (.NET CLR 3.5.30729)\n" +
                 "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n" +
@@ -32,9 +45,13 @@ public class TestClass {
                 "Connection: keep-alive\n" +
                 "Referer: http://localhost/test.php\n" +
                 "Content-Type: application/x-www-form-urlencoded\n" +
-                "Content-Length: 43\n" +
-                "\n" +
+                "Content-Length: 43\n\n" +
                 "first_name=John&last_name=Doe&action=Submit";
+
+
+
+
+
 
         System.out.println(input + "\n\n");
 
@@ -50,19 +67,19 @@ public class TestClass {
 
             case "GET":
                 requestObject = new GetRequest();
-                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
                 break;
 
             case "HEAD":
                 requestObject = new HeadRequest();
-                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
                 break;
 
             case "POST":
                 requestObject = new PostRequest();
-                requestObject.setUrl(currentRow[1].toLowerCase());
+                requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
                 break;
 
@@ -73,12 +90,6 @@ public class TestClass {
         }
 
 
-
-        /*if (inputRowByRow[inputRowByRow.length - 2].length() == 0) {
-
-            requestObject.setBody(inputRowByRow[inputRowByRow.length - 1]);
-
-        }*/
 
 
 
@@ -122,6 +133,8 @@ public class TestClass {
                 case "Content-Length:":
                     requestObject.setContentLength(Integer.valueOf(currentRow[1]));
 
+                    //System.out.println("Content-length i requestfactory = " + requestObject.getContentLength() + "\n\n");
+
                     if (requestObject.getContentLength() > 0) {
                         requestObject.setBody(inputRowByRow[inputRowByRow.length - 1]);
                     }
@@ -134,8 +147,9 @@ public class TestClass {
 
         }
 
-        System.out.println(requestObject.toString());
+        requestObject.setParsedData();
 
+        System.out.println(requestObject.toString());
 
 
 

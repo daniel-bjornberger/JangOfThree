@@ -24,21 +24,18 @@ public class RequestFactory {
                 requestObject = new GetRequest();
                 requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                requestObject.setParsedData();
                 break;
 
             case "HEAD":
                 requestObject = new HeadRequest();
                 requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                requestObject.setParsedData();
                 break;
 
             case "POST":
                 requestObject = new PostRequest();
                 requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                requestObject.setParsedData();
                 break;
 
             default:
@@ -46,17 +43,6 @@ public class RequestFactory {
                 break;
 
         }
-
-
-
-        /*if (inputRowByRow[inputRowByRow.length - 2].length() == 0) {
-
-            requestObject.setBody(inputRowByRow[inputRowByRow.length - 1]);
-
-        }*/
-
-
-
 
 
         for (int i = 1; i < inputRowByRow.length; i++) {
@@ -108,6 +94,8 @@ public class RequestFactory {
             }
 
         }
+
+        requestObject.setParsedData();
 
         return requestObject;
 
