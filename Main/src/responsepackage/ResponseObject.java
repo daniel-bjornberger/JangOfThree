@@ -6,7 +6,7 @@ import java.time.ZonedDateTime;
 /**
  * @author Daniel Björnberger
  */
-public abstract class ResponseObject implements Response {
+public class ResponseObject implements Response {
 
 
     private String protocolVersion;
@@ -41,7 +41,7 @@ public abstract class ResponseObject implements Response {
         status = EMPTY_STRING;
         statusMessage = EMPTY_STRING;
         date = EMPTY_STRING;
-        server = EMPTY_STRING;
+        server = "Java HTTP Server from Jang Of Three";
         contentType = EMPTY_STRING;
         contentLength = 0;
         contentLanguage = EMPTY_STRING;

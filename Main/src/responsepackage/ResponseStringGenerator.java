@@ -40,9 +40,11 @@ public class ResponseStringGenerator {
 
             }
 
+            builder.append("\n");
+
             if (responseObject.bodyIsSet()) {
 
-                builder.append("\n\n" + responseObject.getBody());
+                builder.append("\n" + responseObject.getBody());
 
             }
 
