@@ -114,7 +114,9 @@ public class ServerConnect extends Observable implements Runnable{
             Response response= requestHandler.doEverything(requestString);
             ResponseStringGenerator rsg = new ResponseStringGenerator();
             String responseString= rsg.createResponseString((ResponseObject) response);
-            System.out.println(responseString);
+            System.out.println("=======================================");
+            System.out.println("Response string is:" + responseString);
+            System.out.println("=======================================");
            // setChanged();
             //notifyObservers(requestString);
            // System.out.println(requestString);
@@ -155,41 +157,47 @@ public class ServerConnect extends Observable implements Runnable{
 
             } else {
                 // GET or HEAD method
-               // fileRequested =response.getBody();
+               fileRequested =response.getBody();
                // if (fileRequested.endsWith("/")) {
                //     fileRequested += DEFAULT_FILE;
                // }
 
                 File file = new File(WEB_ROOT, fileRequested);
 
-                    int fileLength;
+                int fileLength;
                // String content = getContentType(fileRequested);
-//                boolean isFile= false;
-//                //OM STATISK FIL:
-//                for (String format:staticFileHandler.getFormats()){
-//                    if (response.getContentType().equals(format)){
-//                        isFile=true;
-//                    }
-//                }
-                boolean isFile = Arrays.stream(staticFileHandler.getFormats()).filter(p -> p.equals(response.getContentType())).findFirst().isPresent();
+                boolean isFile= false;
+                //OM STATISK FIL:
+
+                if(staticFileHandler.isStaticContentType(response)) {
+                    isFile = true;
+                    System.out.println("file is true");
+                } else {
+                    System.out.println("file is false");
+                }
+
+
+                //boolean isFile = Arrays.stream(staticFileHandler.getFormats()).filter(p -> p.equals(response.getContentType())).findFirst().isPresent();
                 byte[] fileData;
                 if (isFile){
                     file = new File(WEB_ROOT,response.getBody());
                     fileLength = (int) file.length();
                     fileData = readFileData(file, fileLength);
+                    System.out.println("file length is ACTUALLY " + fileLength);
                 }
                 else{
                     fileData = response.getBody().getBytes();
                     fileLength =  response.getBody().getBytes().length;
+
                 }
 
 
 
 
-                if (method.equals("GET")) {
+               // if (method.equals("GET")) {
 
                     // GET method so we return content
-                    // byte[] fileData = readFileData(file, fileLength);
+                    //fileData = readFileData(file, fileLength);
 
                     // send HTTP Headers
                    // out.println("HTTP/1.1 200 OK");
@@ -197,13 +205,19 @@ public class ServerConnect extends Observable implements Runnable{
                    // out.println("Date: " + new Date());
                    // out.println("Content-type: " + content);
                    // out.println("Content-length: " + fileLength);
+                    System.out.println("Sending response string...");
                    out.write(responseString);
+                    System.out.println("Response String Sent:");
+                System.out.println("---------------------------------");
+                System.out.println(responseString);
+                System.out.println("---------------------------------");
                     out.println(); // blank line between headers and content, very important !
-                  //  out.flush(); // flush character output stream buffer
+                    out.flush(); // flush character output stream buffer
 
                     dataOut.write(fileData, 0, fileLength);
                     dataOut.flush();
-                }
+                System.out.println(Arrays.toString(fileData));
+               // }
 
                 if (verbose) {
                   //  System.out.println("File " + fileRequested + " of type " + content + " returned");

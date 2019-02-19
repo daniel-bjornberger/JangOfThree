@@ -7,6 +7,8 @@ import loadservices.ServiceHandler;
 import responsepackage.Response;
 import responsepackage.ResponseObject;
 
+import java.io.File;
+
 public class RequestHandler {
     private static boolean addBody =false;
 
@@ -65,12 +67,15 @@ public class RequestHandler {
                     response.setStatus("200");
                     response.setStatusMessage("OK");
                     response.setContentType("image/jpeg");
+                    System.out.println("REQUEST FULL URL:"+ request.getFullUrl());
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
+
+
                     request.setValid(false);
                     ;
             }
-
+            response.setContentLength((int)(new File(new File("."),response.getBody()).length()));
 
 
             System.out.println(response);

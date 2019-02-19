@@ -1,5 +1,7 @@
 package requestpackage;
 
+import responsepackage.Response;
+
 public class staticFileHandler {
     public static String[] getFormats() {
         return formats;
@@ -11,9 +13,26 @@ public class staticFileHandler {
             ".js",
             ".pdf",
             ".png",
-            ".jpg"
-
+            ".jpg",
+            ".jpeg"
     };
+    private static String[] contentTypes={
+            "text/html",
+            "text/css",
+            "text/javascript",
+            "application/pdf",
+            "image/png",
+            "image/jpeg"
+    };
+
+    public static boolean isStaticContentType(Response response){
+        for (String contentType:contentTypes){
+            if (response.getContentType().equals(contentType)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static String detect(Request request){
         for(String format: formats) {
