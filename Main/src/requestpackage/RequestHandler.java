@@ -3,36 +3,23 @@ package requestpackage;
 import httpserver.ServerConnect;
 import loadservices.Service;
 import loadservices.ServiceHandler;
+import responsepackage.Response;
+import responsepackage.ResponseObject;
 
-import java.util.Observable;
-import java.util.Observer;
-
-/**
- * @authors Pontus Fredriksson, Joel Gunnarsson
- * @deprecated
- */
-public class RequestObserver implements Observer {
+public class RequestHandler {
     private static boolean addBody =false;
-    private Observable observable;
-    String requestString="";
-    public void setObservable(Observable observable){
-        this.observable = observable;
-        this.observable.addObserver(this);
-        System.out.println("Request kopplad 1");
-    }
-    @Override
-    public void update(Observable o, Object arg) {
 
-        if (o instanceof ServerConnect){
-            System.out.println("=========================================");
+    public Response doEverything(String requestString){
 
-            requestString=((ServerConnect) o).getRequestString();
-            System.out.println(((ServerConnect) o).getRequestString());
             System.out.println("=========================================");
             System.out.println("Creating Request object...");
             RequestFactory requestFactory = new RequestFactory();
             Request request = requestFactory.createRequestObject(requestString);
             System.out.println("Request object created successfully!");
+
+            Response response = new ResponseObject();
+
+
             if (staticFileHandler.detect(request)!=null){
                 System.out.println(staticFileHandler.detect(request) + " file requested.");
             }
@@ -49,6 +36,7 @@ public class RequestObserver implements Observer {
             }
 
 
-        }
+    return response;
     }
+
 }

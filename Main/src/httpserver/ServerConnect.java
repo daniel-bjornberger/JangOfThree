@@ -1,5 +1,9 @@
 package httpserver;
 
+import requestpackage.Request;
+import requestpackage.RequestHandler;
+import responsepackage.Response;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -106,8 +110,12 @@ public class ServerConnect extends Observable implements Runnable{
             }while (!thisLine.isEmpty());
             requestString = stringBuilder.toString();
 
-            setChanged();
-            notifyObservers(requestString);
+            RequestHandler requestHandler = new RequestHandler();
+
+            Response response= requestHandler.doEverything(requestString);
+
+           // setChanged();
+            //notifyObservers(requestString);
            // System.out.println(requestString);
             in.reset();
             String input = in.readLine();
