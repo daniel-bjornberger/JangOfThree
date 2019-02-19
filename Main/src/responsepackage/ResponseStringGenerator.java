@@ -8,7 +8,7 @@ public class ResponseStringGenerator {
 
     public String createResponseString(ResponseObject responseObject) throws Exception {
 
-        if (responseObject.statusIsSet() && responseObject.statusMessageIsSet() && responseObject.contentTypeIsSet() && responseObject.serverIsSet()) {
+        if (responseObject.statusIsSet() && responseObject.statusMessageIsSet() && responseObject.contentTypeIsSet() && responseObject.serverIsSet() && responseObject.contentLengthIsSet()) {
 
 
             StringBuilder builder = new StringBuilder(responseObject.getProtocolVersion() + " " +
@@ -36,7 +36,7 @@ public class ResponseStringGenerator {
 
             if (responseObject.connectionIsSet()) {
 
-                builder.append("Connection: " + responseObject.getConnection());
+                builder.append("\nConnection: " + responseObject.getConnection());
 
             }
 
