@@ -17,7 +17,7 @@ public class staticFileHandler {
 
     public static String detect(Request request){
         for(String format: formats) {
-            if (request.getUrl().endsWith(format)) {
+            if (request.getFullUrl().endsWith(format)) {
                 return format;
             }
         }
