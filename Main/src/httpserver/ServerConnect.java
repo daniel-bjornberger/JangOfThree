@@ -217,7 +217,7 @@ public class ServerConnect extends Observable implements Runnable{
 
                     dataOut.write(fileData, 0, fileLength);
                     dataOut.flush();
-                System.out.println(Arrays.toString(fileData));
+                //System.out.println(Arrays.toString(fileData));
                // }
 
                 if (verbose) {
