@@ -17,6 +17,12 @@ public class RequestFactory {
 
         RequestObject requestObject;
 
+        System.out.println("\n\nUtskrift av hela request-strängen, omgjord till stringarray: \n\n");
+
+        for (int i = 0; i < inputRowByRow.length; i++) {
+            System.out.println(inputRowByRow[i]);
+        }
+
 
         switch (currentRow[0]) {
 
