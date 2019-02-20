@@ -4,7 +4,6 @@ import requestpackage.*;
 import responsepackage.Response;
 import responsepackage.ResponseObject;
 import responsepackage.ResponseStringGenerator;
-
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -102,20 +101,47 @@ public class ServerConnect extends Observable implements Runnable{
             String thisLine= in.readLine();
 
             do {
-                stringBuilder.append(thisLine+"\n");
+                stringBuilder.append(thisLine).append("\n");
                 thisLine = in.readLine();
 
-            }while (!thisLine.isEmpty());
+            } while (!thisLine.isEmpty());
+
             requestString = stringBuilder.toString();
 
-            System.out.println("\n\nRequest-string i ServerConnect: " + requestString + "\n");
+            RequestFactory requestFactory = new RequestFactory();
+
+            Request request = requestFactory.createRequestObject(requestString);
+
+            System.out.println("\n=======================\nRequest object created!\n=======================");
+
+
+
+            if (request.contentLengthIsSet()) {
+
+                int contentLength = request.getContentLength();
+
+                StringBuilder body = new StringBuilder();
+
+                int c;
+
+                for (int i = 0; i < contentLength; i++) {
+
+                    c = in.read();
+                    body.append((char) c);
+
+                }
+
+                request.setBody(body.toString());
+            }
+
 
             RequestHandler requestHandler = new RequestHandler();
 
-            ReqRes reqRes = requestHandler.doEverything(requestString);
-            Response response = reqRes.getResponse();
-            Request request = reqRes.getRequest();
-            
+            Response response = requestHandler.doEverything(request);
+
+
+
+
             ResponseStringGenerator rsg = new ResponseStringGenerator();
             String responseString= rsg.createResponseString((ResponseObject) response);
             System.out.println("=======================================");
