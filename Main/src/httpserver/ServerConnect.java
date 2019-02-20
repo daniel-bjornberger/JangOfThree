@@ -110,6 +110,8 @@ public class ServerConnect extends Observable implements Runnable{
             }while (!thisLine.isEmpty());
             requestString = stringBuilder.toString();
 
+            System.out.println("\n\nRequest-string i ServerConnect: " + requestString + "\n");
+
             RequestHandler requestHandler = new RequestHandler();
             Response response= requestHandler.doEverything(requestString);
             ResponseStringGenerator rsg = new ResponseStringGenerator();
