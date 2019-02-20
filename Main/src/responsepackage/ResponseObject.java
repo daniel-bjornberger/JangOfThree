@@ -30,6 +30,10 @@ public class ResponseObject implements Response {
 
     private String body;
 
+    private boolean staticFile;
+
+    private boolean hasBody;
+
 
     private static final String EMPTY_STRING = "";
 
@@ -48,6 +52,8 @@ public class ResponseObject implements Response {
         contentLanguage = EMPTY_STRING;
         connection = "keep-alive";
         body = EMPTY_STRING;
+        staticFile = false;
+        hasBody = true;
 
     }
 
@@ -201,6 +207,26 @@ public class ResponseObject implements Response {
         return this.body.length() > 0;
     }
 
+    @Override
+    public boolean isStaticFile() {
+        return this.staticFile;
+    }
+
+    @Override
+    public void setStaticFile(boolean staticFile) {
+        this.staticFile = staticFile;
+    }
+
+    @Override
+    public boolean hasBody() {
+        return this.hasBody;
+    }
+
+    @Override
+    public void setHasBody(boolean hasBody) {
+        this.hasBody = hasBody;
+    }
+
 
     /** The method 'toString' is only for testing purpose.
      * @return The method returns a String representation of a RequestObject.
@@ -227,7 +253,11 @@ public class ResponseObject implements Response {
                 "\nConnection: " +
                 this.connection +
                 "\nBody: " +
-                this.body;
+                this.body +
+                "\nStatic File: " +
+                this.staticFile +
+                "\nHas Body: " +
+                this.hasBody;
 
     }
 

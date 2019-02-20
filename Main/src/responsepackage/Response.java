@@ -74,4 +74,14 @@ public interface Response {
     boolean bodyIsSet();
 
 
+    boolean isStaticFile();
+
+    void setStaticFile(boolean staticFile);
+
+
+    boolean hasBody();
+
+    void setHasBody(boolean hasBody);
+
+
 }
