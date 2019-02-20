@@ -164,31 +164,7 @@ public class ServerConnect extends Observable implements Runnable{
             System.out.println("filerequested BLALA:" + fileRequested);
             System.out.println("Response.getBody:" + response.getBody());
             // we support only GET and HEAD methods, we check
-          if (!method.equals("GET")  &&  !method.equals("HEAD")) {
-                if (verbose) {
-                    System.out.println("501 Not Implemented : " + method + " method.");
-                }
 
-                // we return the not supported file to the client
-                File file = new File(WEB_ROOT, METHOD_NOT_SUPPORTED);
-                int fileLength = (int) file.length();
-                String contentMimeType = "text/html";
-                //read content to return to client
-                byte[] fileData = readFileData(file, fileLength);
-
-                // we send HTTP Headers with data to client
-                out.println("HTTP/1.1 501 Not Implemented");
-                out.println("Server: Java HTTP Server from SSaurel : 1.0");
-                out.println("Date: " + new Date());
-                out.println("Content-type: " + contentMimeType);
-                out.println("Content-length: " + fileLength);
-                out.println(); // blank line between headers and content, very important !
-                out.flush(); // flush character output stream buffer
-                // file
-                dataOut.write(fileData, 0, fileLength);
-                dataOut.flush();
-
-            } else {
                 // GET or HEAD method
                fileRequested =response.getBody();
                // if (fileRequested.endsWith("/")) {
@@ -261,7 +237,7 @@ public class ServerConnect extends Observable implements Runnable{
                   //  System.out.println("File " + fileRequested + " of type " + content + " returned");
                 }
 
-            }
+            
 
         } catch (FileNotFoundException fnfe) {
             try {
