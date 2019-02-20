@@ -23,6 +23,8 @@ public class RequestHandler {
 
             Response response = new ResponseObject();
 
+            response.setResponseHasBody(request.responseShallHaveBody());
+
 
         if (staticFileHandler.detect(request)!=null){
             String fileType =staticFileHandler.detect(request);
