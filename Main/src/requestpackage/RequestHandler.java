@@ -82,7 +82,7 @@ public class RequestHandler {
 
             }
             response.setContentLength((int)(new File(new File("."),response.getBody()).length()));
-
+            response.setStaticFile(true);
 
             System.out.println(response);
                 return  response;

@@ -23,8 +23,8 @@ public class GenericModuleClass implements Service {
     public void execute(Request request, Response response) {
         response.setStatus("200");
         response.setStatusMessage("OK");
-        response.setContentType("text/html");
-        response.setBody("<a href=\"http://localhost:8082/PageDir/Laboration1.pdf\" target=\"_blank\"> PDF</a>");
+        response.setContentType("text/plain");
+        response.setBody("GenericModule funkar");
         response.setContentLength(response.getBody().length());
     }
 
