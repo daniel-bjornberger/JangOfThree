@@ -90,11 +90,6 @@ public class RequestFactory {
 
                 case "Content-Length:":
                     requestObject.setContentLength(Integer.valueOf(currentRow[1]));
-
-                    if (requestObject.getContentLength() > 0) {
-                        requestObject.setBody(inputRowByRow[inputRowByRow.length - 1]);
-                        System.out.println("Case Content-length: " + inputRowByRow[inputRowByRow.length - 1]);
-                    }
                     break;
 
                 default:
