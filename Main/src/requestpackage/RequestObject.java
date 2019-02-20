@@ -30,6 +30,8 @@ public abstract class RequestObject implements Request {
 
     private HashMap<String, String> parsedData;
 
+    private boolean responseShallHaveBody;
+
 
     static final String[] EMPTY_ARRAY = new String[0];
 
@@ -50,6 +52,7 @@ public abstract class RequestObject implements Request {
         connection = EMPTY_STRING;
         valid = true;
         parsedData = new HashMap<>();
+        responseShallHaveBody = false;
 
     }
 
@@ -286,6 +289,14 @@ public abstract class RequestObject implements Request {
     }
 
 
+
+    public boolean responseShallHaveBody() {
+        return  this.responseShallHaveBody;
+    }
+
+    public void setResponseShallHaveBody(boolean responseShallHaveBody) {
+        this.responseShallHaveBody = responseShallHaveBody;
+    }
 
 
 }

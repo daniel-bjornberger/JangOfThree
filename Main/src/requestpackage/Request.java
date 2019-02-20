@@ -103,4 +103,9 @@ public interface Request {
     boolean parsedDataIsSet();
 
 
+    boolean responseShallHaveBody();
+
+    void setResponseShallHaveBody(boolean responseShallHaveBody);
+
+
 }
