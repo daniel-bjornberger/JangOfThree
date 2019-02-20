@@ -5,26 +5,15 @@ import loadservices.Service;
 import loadservices.Type;
 import requestpackage.Request;
 import responsepackage.Response;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.util.Date;
-
-/**
- * @author Pontus Fredriksson
- */
-
-@Adress("/genericmoduleclass")
-@Type ("URL")
-public class GenericModuleClass implements Service {
-
-
+@Adress("/")
+@Type("URL")
+public class Index implements Service {
     @Override
     public void execute(Request request, Response response) {
         response.setStatus("200");
         response.setStatusMessage("OK");
-        response.setContentType("text/html");
-        response.setBody("<a href=\"http://localhost:8082/PageDir/Laboration1.pdf\" target=\"_blank\"> PDF</a>");
+        response.setContentType("text/htlm");
+        response.setBody("index.htlm");
         response.setContentLength(response.getBody().length());
     }
 
@@ -33,3 +22,4 @@ public class GenericModuleClass implements Service {
         return "GenericModuleClass";
     }
 }
+

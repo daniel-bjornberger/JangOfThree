@@ -170,7 +170,8 @@ public class ServerConnect extends Observable implements Runnable{
                 boolean isFile= false;
                 //OM STATISK FIL:
 
-                if(staticFileHandler.isStaticContentType(response)) {
+                if(staticFileHandler.isStaticContentType(response
+                )) {
                     isFile = true;
                     System.out.println("file is true");
                 } else {
