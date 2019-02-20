@@ -17,9 +17,9 @@ div.a{
 
 
 <h2>Generated list of module pages:</h2>
-<p>
-<embed src="GenericModuleClass">
-</p>
+<div id="menu">
+
+</div>
 
 </div>
 <h2>Collaborators</h2>
@@ -29,6 +29,20 @@ Pontus Fredriksson
 Joel Gunnarsson
 </pre>
 
+<script>
+loadData();
 
+function loadData(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("menu").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "GenericModuleClass", true);
+  xhttp.send();
+}
+</script>
 </body>
 </html>
