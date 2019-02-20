@@ -17,7 +17,7 @@ public class GuestBookUpdate implements Service {
         response.setStatus("200");
         response.setStatusMessage("OK");
         response.setContentType("text/html");
-        response.setBody("Skicka retur med jsson");
+        response.setBody("json");
         response.setContentLength(response.getBody().length());
 
     }

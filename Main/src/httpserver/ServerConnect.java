@@ -133,7 +133,7 @@ public class ServerConnect extends Observable implements Runnable{
 
                 request.setBody(body.toString());
             }
-
+            System.out.println("REWUEST BODYYYYYY  :"+request.getBody());
 
             RequestHandler requestHandler = new RequestHandler();
 
@@ -237,7 +237,7 @@ public class ServerConnect extends Observable implements Runnable{
                   //  System.out.println("File " + fileRequested + " of type " + content + " returned");
                 }
 
-            
+
 
         } catch (FileNotFoundException fnfe) {
             try {
