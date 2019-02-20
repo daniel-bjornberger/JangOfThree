@@ -134,7 +134,7 @@ public class ServerConnect extends Observable implements Runnable{
             System.out.println("filerequested BLALA:" + fileRequested);
             System.out.println("Response.getBody:" + response.getBody());
             // we support only GET and HEAD methods, we check
-            if (!method.equals("GET")  &&  !method.equals("HEAD")) {
+          if (!method.equals("GET")  &&  !method.equals("HEAD")) {
                 if (verbose) {
                     System.out.println("501 Not Implemented : " + method + " method.");
                 }

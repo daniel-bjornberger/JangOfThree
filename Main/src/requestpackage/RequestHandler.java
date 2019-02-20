@@ -19,6 +19,7 @@ public class RequestHandler {
             System.out.println("Creating Request object...");
             RequestFactory requestFactory = new RequestFactory();
             Request request = requestFactory.createRequestObject(requestString);
+        System.out.println(requestString);
             System.out.println("Request object created successfully!");
 
             Response response = new ResponseObject();
