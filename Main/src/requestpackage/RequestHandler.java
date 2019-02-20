@@ -13,7 +13,7 @@ import java.io.File;
 public class RequestHandler {
     private static boolean addBody =false;
 
-    public Response doEverything(String requestString){
+    public ReqRes doEverything(String requestString){
 
             System.out.println("=========================================");
             System.out.println("Creating Request object...");
@@ -87,7 +87,7 @@ public class RequestHandler {
             response.setStaticFile(true);
 
             System.out.println(response);
-                return  response;
+                return  new ReqRes(request,response);
             }
             if(request.isValid()){
                 System.out.println("No static file requested.");
@@ -111,7 +111,7 @@ public class RequestHandler {
             }
 
 
-    return response;
+        return  new ReqRes(request,response);
     }
 
 }

@@ -1,8 +1,6 @@
 package httpserver;
 
-import requestpackage.Request;
-import requestpackage.RequestHandler;
-import requestpackage.staticFileHandler;
+import requestpackage.*;
 import responsepackage.Response;
 import responsepackage.ResponseObject;
 import responsepackage.ResponseStringGenerator;
@@ -113,12 +111,18 @@ public class ServerConnect extends Observable implements Runnable{
             System.out.println("\n\nRequest-string i ServerConnect: " + requestString + "\n");
 
             RequestHandler requestHandler = new RequestHandler();
-            Response response= requestHandler.doEverything(requestString);
+
+            ReqRes reqRes = requestHandler.doEverything(requestString);
+            Response response = reqRes.getResponse();
+            Request request = reqRes.getRequest();
+            
             ResponseStringGenerator rsg = new ResponseStringGenerator();
             String responseString= rsg.createResponseString((ResponseObject) response);
             System.out.println("=======================================");
             System.out.println("Response string is:" + responseString);
             System.out.println("=======================================");
+
+
            // setChanged();
             //notifyObservers(requestString);
            // System.out.println(requestString);
