@@ -32,7 +32,7 @@ public class ResponseObject implements Response {
 
     private boolean staticFile;
 
-    private boolean hasBody;
+    private boolean responseHasBody;
 
 
     private static final String EMPTY_STRING = "";
@@ -53,7 +53,7 @@ public class ResponseObject implements Response {
         connection = "keep-alive";
         body = EMPTY_STRING;
         staticFile = false;
-        hasBody = true;
+        responseHasBody = true;
 
     }
 
@@ -218,13 +218,13 @@ public class ResponseObject implements Response {
     }
 
     @Override
-    public boolean hasBody() {
-        return this.hasBody;
+    public boolean responseHasBody() {
+        return this.responseHasBody;
     }
 
     @Override
-    public void setHasBody(boolean hasBody) {
-        this.hasBody = hasBody;
+    public void setResponseHasBody(boolean responseHasBody) {
+        this.responseHasBody = responseHasBody;
     }
 
 
@@ -257,7 +257,7 @@ public class ResponseObject implements Response {
                 "\nStatic File: " +
                 this.staticFile +
                 "\nHas Body: " +
-                this.hasBody;
+                this.responseHasBody;
 
     }
 

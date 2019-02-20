@@ -79,9 +79,9 @@ public interface Response {
     void setStaticFile(boolean staticFile);
 
 
-    boolean hasBody();
+    boolean responseHasBody();
 
-    void setHasBody(boolean hasBody);
+    void setResponseHasBody(boolean responseHasBody);
 
 
 }
