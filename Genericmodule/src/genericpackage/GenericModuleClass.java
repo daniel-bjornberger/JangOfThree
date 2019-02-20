@@ -21,8 +21,6 @@ public class GenericModuleClass implements Service {
 
     @Override
     public void execute(Request request, Response response) {
-        //if request.getUrl().
-        System.out.println("KÖRDES WHOH");
         response.setStatus("200");
         response.setStatusMessage("OK");
         response.setContentType("text/plain");
