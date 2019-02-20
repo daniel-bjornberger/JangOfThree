@@ -4,6 +4,7 @@ import httpserver.ServerConnect;
 import loadservices.Adress;
 import loadservices.Service;
 import loadservices.ServiceHandler;
+import loadservices.Type;
 import responsepackage.Response;
 import responsepackage.ResponseObject;
 
@@ -91,12 +92,20 @@ public class RequestHandler {
                 ServiceHandler serviceHandler = new ServiceHandler("out/artifacts/lib/");
                 System.out.println("Services found: "+ serviceHandler.toString());
                 System.out.println("REQUEST URL IS: " + request.getFullUrl());
+
                 if (serviceHandler.getServices() != null){
                     for(Service service:serviceHandler.getServices()){
                         if (service.getClass().getAnnotation(Adress.class).value().equals(request.getFullUrl()))
                         service.execute(request, response);
                     }
+                    for(Service service:serviceHandler.getServices()){
+                        if (service.getClass().getAnnotation(Type.class).value().equals("Standard")){
+                            service.execute(request, response);
+                        }
+                    }
+
                 }
+
             }
 
 
