@@ -1,5 +1,7 @@
 package guestbook;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import loadservices.Adress;
 import loadservices.Service;
 import loadservices.Type;
@@ -19,15 +21,14 @@ public class Returnjson implements Service {
 
     @Override
     public void execute(Request request, Response response) {
-
-        String firstname=request.getParsedData().get("firstname");
-        String messeges=request.getParsedData().get("messeges");
+        Gson gson = new Gson();
+        String serialized = gson.toJson(request.getParsedData());
 
 
         response.setStatus("200");
         response.setStatusMessage("OK");
         response.setContentType("text/html");
-        response.setBody(String.valueOf("Hej"));
+        response.setBody(String.valueOf(serialized));
         response.setContentLength(response.getBody().length());
         response.setStaticFile(false);
     }
