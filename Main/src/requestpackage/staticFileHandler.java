@@ -14,8 +14,7 @@ public class staticFileHandler {
             ".pdf",
             ".png",
             ".jpg",
-            ".jpeg",
-            ".ico"
+            ".jpeg"
     };
     private static String[] contentTypes={
             "text/html",
@@ -23,8 +22,7 @@ public class staticFileHandler {
             "text/javascript",
             "application/pdf",
             "image/png",
-            "image/jpeg",
-            "image/x-icon"
+            "image/jpeg"
     };
 
     public static boolean isStaticContentType(Response response){

@@ -44,17 +44,17 @@ public class ResponseObject implements Response {
     public ResponseObject() {
 
         protocolVersion = "HTTP/1.1";
-        status = "404";
-        statusMessage = "File not found";
+        status = EMPTY_STRING;
+        statusMessage = EMPTY_STRING;
         date = EMPTY_STRING;
         server = "Java HTTP Server from JangOfThree : 1.0";
-        contentType = "text/html";
-        body = "404.html";
+        contentType = EMPTY_STRING;
+        body = EMPTY_STRING;
         //contentLength = (int) new File(".", body).length();
-        contentLength=(int)(new File(new File("."),body).length());
+        contentLength=0;
         contentLanguage = EMPTY_STRING;
         connection = "keep-alive";
-        staticFile = true;
+        staticFile = false;
         responseHasBody = true;
 
     }
