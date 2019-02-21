@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @Adress("/guestbookgetdata")
-@Type("URL")
+@Type("utility")
 public class GuestBookData implements Service {
 
 

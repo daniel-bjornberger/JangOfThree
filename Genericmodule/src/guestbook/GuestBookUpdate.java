@@ -13,7 +13,7 @@ import static java.nio.charset.StandardCharsets.ISO_8859_1;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Adress("/guestbook/update")
-@Type("URL")
+@Type("utility")
 public class GuestBookUpdate implements Service {
     public GuestBookUpdate() {
     }
