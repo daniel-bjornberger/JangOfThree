@@ -15,7 +15,7 @@ import static java.nio.charset.StandardCharsets.ISO_8859_1;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Adress("/json")
-@Type("URL")
+@Type("utility")
 
 public class Returnjson implements Service {
 
