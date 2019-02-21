@@ -14,13 +14,17 @@ public class HeadRequest implements Service {
 
     @Override
     public void execute(Request request, Response response) {
-        System.out.println("Running Index module...");
+
+        System.out.println("Running Head Request...");
         response.setStatus("200");
         response.setStatusMessage("OK");
         response.setContentType("text/html");
-        response.setBody("index.html");
+        response.setBody("headajaxdemo.html");
         response.setContentLength((int)(new File(new File("."),response.getBody()).length()));
         response.setStaticFile(true);
+
+        System.out.println(response.toString());
+
     }
 
     @Override

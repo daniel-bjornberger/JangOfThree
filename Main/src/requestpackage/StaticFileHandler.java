@@ -2,7 +2,7 @@ package requestpackage;
 
 import responsepackage.Response;
 
-public class staticFileHandler {
+public class StaticFileHandler {
     public static String[] getFormats() {
         return formats;
     }
@@ -14,7 +14,8 @@ public class staticFileHandler {
             ".pdf",
             ".png",
             ".jpg",
-            ".jpeg"
+            ".jpeg",
+            ".ico"
     };
     private static String[] contentTypes={
             "text/html",
@@ -22,7 +23,8 @@ public class staticFileHandler {
             "text/javascript",
             "application/pdf",
             "image/png",
-            "image/jpeg"
+            "image/jpeg",
+            "image/x-icon"
     };
 
     public static boolean isStaticContentType(Response response){
