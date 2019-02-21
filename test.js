@@ -1,3 +1,3 @@
 function functionName(){
-	alert('Hej Martin!');
+	alert('Script hämtat via modul "Alert"');
 }
