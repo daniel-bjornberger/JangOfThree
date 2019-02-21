@@ -30,7 +30,6 @@ public class RequestHandler {
                     response.setContentType("text/html");
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
-                    request.setValid(false);
                     break;
                 case ".css":
                     response.setStatus("200");
@@ -38,7 +37,7 @@ public class RequestHandler {
                     response.setContentType("text/css");
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
-                    request.setValid(false);
+
                     break;
                 case ".js":
                     response.setStatus("200");
@@ -46,7 +45,7 @@ public class RequestHandler {
                     response.setContentType("text/javascript");
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
-                    request.setValid(false);
+
                     break;
 
                 case ".pdf":
@@ -55,7 +54,7 @@ public class RequestHandler {
                     response.setContentType("application/pdf");
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
-                    request.setValid(false);
+
                     System.out.println("got to pdf switch");
                     break;
                 case ".png":
@@ -64,7 +63,8 @@ public class RequestHandler {
                     response.setContentType("image/png");
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
-                    request.setValid(false);
+
+
                     break;
                 case ".jpg":
                     response.setStatus("200");
@@ -73,7 +73,8 @@ public class RequestHandler {
                     System.out.println("REQUEST FULL URL:"+ request.getFullUrl());
                     response.setBody(request.getFullUrl());
                     response.setContentLength(response.getBody().length());
-                    request.setValid(false);
+                    System.out.println(".jpg case ran!!!  response body is:" + response.getBody());
+
                     break;
                 case ".ico":
                     response.setStatus("200");
@@ -87,9 +88,10 @@ public class RequestHandler {
             }
             response.setContentLength((int)(new File(new File("."),response.getBody()).length()));
             response.setStaticFile(true);
-            }
+            }else {
+            System.out.println("No static File requested");
+        }
             if(request.isValid()){
-                System.out.println("No static file requested.");
                 ServiceHandler serviceHandler = new ServiceHandler("out/artifacts/lib/");
                 System.out.println("Services found: "+ serviceHandler.toString());
                 System.out.println("REQUEST URL IS: " + request.getFullUrl());
