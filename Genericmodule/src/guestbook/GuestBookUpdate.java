@@ -16,8 +16,14 @@ public class GuestBookUpdate implements Service {
     public void execute(Request request, Response response) {
         //List<HashMap<String, String>> s=Collections.singletonList(request.getParsedData());
         System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
-       GuestBookDB guestBookDB =new GuestBookDB();
-       guestBookDB.addCustomer("Joel");
+        System.out.println(request.getParsedData().size());
+        String firstname=request.getParsedData().get("firstname");
+        String messeges=request.getParsedData().get("messeges");
+        System.out.println(firstname);
+        System.out.println(messeges);
+
+        GuestBookDB guestBookDB =new GuestBookDB();
+       guestBookDB.addVisitor(firstname,messeges);
 
 
         System.out.println("Running Guestbook");

@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        .textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 16px;
+            resize: none;
+        }
+    </style>
+</head>
+
 <body>
 <form action="/guestbook/update" method="post">
+
     <p>First name: <input name="firstname"></p>
-    <p>Last name: <input name="lastname"></p>
+    <p>Messages: <input name="messeges" class="textarea"></p>
+
 
     <p><input type="submit" value="Send POST"></p>
 </form>
+<hr>
+
+<p><b>Name:</b></p>
+<p><b>Comment:</b></p>
+<hr>
 
 </body>
 </html>
