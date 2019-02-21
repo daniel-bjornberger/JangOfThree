@@ -20,8 +20,8 @@ public class FileNotFound implements Service {
                 )
         ){
             System.out.println("Running FileNotFound module...");
-            response.setStatus("200");
-            response.setStatusMessage("OK");
+            response.setStatus("404");
+            response.setStatusMessage("Not Found");
             response.setContentType("text/html");
             response.setBody("404.html");
             response.setContentLength((int)(new File(new File("."),response.getBody()).length()));

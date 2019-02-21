@@ -11,7 +11,7 @@ import java.io.File;
 /**
  * @author Daniel Björnberger
  */
-@Adress("/head")
+@Adress("/head_request_demo")
 @Type("URL")
 public class HeadRequest implements Service {
 

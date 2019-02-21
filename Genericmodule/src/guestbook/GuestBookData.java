@@ -27,6 +27,7 @@ public class GuestBookData implements Service {
         @Override
         public void execute(Request request, Response response) {
             ServiceHandler serviceHandler = new ServiceHandler("out/artifacts/lib/");
+            System.out.println("Running GuestBookData module...2");
             response.setStatus("200");
             response.setStatusMessage("OK");
             response.setContentType("text/plain");
@@ -34,27 +35,22 @@ public class GuestBookData implements Service {
             StringBuilder stringBuilder = new StringBuilder();
             GuestBookDB guestBookDB=new GuestBookDB();
             ArrayList <Visitors> visitorsArrayList= new ArrayList<Visitors>(guestBookDB.findAllVisitors());
-            int i=0;
             for(Visitors s:visitorsArrayList) {
-                if (true){
+
 
                     stringBuilder.append(
-                            "<p><b>Name:"+visitorsArrayList.get(i).getFirstName()+"</b></p>\n" +
-                                    "<p><b>Comment:"+visitorsArrayList.get(i).getMesseges()+"</b></p>\n" +
+                            "<p><b>Name:"+s.getFirstName()+"</b></p>\n" +
+                                    "<p><b>Comment:"+s.getMesseges()+"</b></p>\n" +
                                     "<hr>"
                     );
-                }
-            i++;
             }
             response.setBody(
-
                   //<p><b>Name:</b></p>
                     //<p><b>Comment:</b></p>
                     //<hr>
-
                     stringBuilder.toString()
-
             );
+            System.out.println(response.getBody());
             response.setContentLength(response.getBody().length());
             response.setStaticFile(false);
         }

@@ -9,6 +9,7 @@ public class NotImplementedRequest extends RequestObject {
     public NotImplementedRequest() {
 
         super();
+        this.setImplemented(false);
 
     }
 

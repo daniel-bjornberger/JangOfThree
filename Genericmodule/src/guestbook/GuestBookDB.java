@@ -58,9 +58,8 @@ public class GuestBookDB {
 
             ResultSet rs = stmt.executeQuery(sql_select_customer);
 
-            if (rs.next()) {
-                visitorList.add(visitors = new Visitors(rs.getString("firstname"), rs.getString("messeges")));
-
+            while (rs.next()) {
+                visitorList.add(visitors = new Visitors(rs.getString("firstname"), rs.getString("messages")));
             }
             rs.close();
             stmt.close();

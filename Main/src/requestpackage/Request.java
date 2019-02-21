@@ -108,4 +108,9 @@ public interface Request {
     void setResponseShallHaveBody(boolean responseShallHaveBody);
 
 
+    boolean isImplemented();
+
+    void setImplemented(boolean implemented);
+
+
 }

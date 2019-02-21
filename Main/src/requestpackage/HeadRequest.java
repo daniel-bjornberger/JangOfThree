@@ -11,6 +11,7 @@ public class HeadRequest extends RequestObject {
     public HeadRequest() {
 
         super();
+        this.setResponseShallHaveBody(false);
 
     }
 

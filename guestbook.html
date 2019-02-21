@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <style>
         .textarea {
             width: 100%;
@@ -17,19 +18,36 @@
 </head>
 
 <body>
-<form action="/guestbook/update" method="post">
+<form action="/guestbook/update" method="post" accept-charset="UTF-8">
 
     <p>First name: <input name="firstname"></p>
     <p>Messages: <input name="messeges" class="textarea"></p>
 
 
-    <p><input type="submit" value="Send POST"></p>
+    <p><input type="submit" value="Send POST"> <p><input type="submit" formaction="/json" value="Get json"></p>
+
+
 </form>
 <hr>
+<div id="guestbookdata">
 
-<p><b>Name:</b></p>
-<p><b>Comment:</b></p>
-<hr>
+</div>
+
+<script>
+    loadData();
+
+    function loadData(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("guestbookdata").innerHTML =
+                    this.responseText;
+            }
+        };
+        xhttp.open("GET", "/guestbookgetdata", true);
+        xhttp.send();
+    }
+</script>
 
 </body>
 </html>
