@@ -4,3 +4,4 @@ guestbook.GuestBook
 guestbook.GuestBookUpdate
 standardpackage.HeadRequest
 standardpackage.FileNotFound
+guestbook.GuestBookData
