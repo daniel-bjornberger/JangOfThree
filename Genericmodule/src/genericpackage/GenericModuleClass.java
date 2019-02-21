@@ -16,7 +16,7 @@ import java.util.Date;
  */
 
 @Adress("/genericmoduleclass")
-@Type ("URL")
+@Type("utility")
 public class GenericModuleClass implements Service {
 
 
