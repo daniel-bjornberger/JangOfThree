@@ -16,7 +16,7 @@ public class FileNotFound implements Service {
         if (!response.contentTypeIsSet()
                 ||
                 (response.isStaticFile()
-                && (!new File(new File("."),response.getBody()).isFile()                       )
+                && (!new File(new File("."),response.getBody()).isFile())
                 )
         ){
             System.out.println("Running FileNotFound module...");
