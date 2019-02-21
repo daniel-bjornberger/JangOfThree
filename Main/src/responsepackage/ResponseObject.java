@@ -1,5 +1,6 @@
 package responsepackage;
 
+import java.io.File;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.Date;
@@ -43,16 +44,17 @@ public class ResponseObject implements Response {
     public ResponseObject() {
 
         protocolVersion = "HTTP/1.1";
-        status = EMPTY_STRING;
-        statusMessage = EMPTY_STRING;
+        status = "404";
+        statusMessage = "File not found";
         date = EMPTY_STRING;
         server = "Java HTTP Server from JangOfThree : 1.0";
-        contentType = EMPTY_STRING;
-        contentLength = 0;
+        contentType = "text/html";
+        body = "404.html";
+        //contentLength = (int) new File(".", body).length();
+        contentLength=(int)(new File(new File("."),body).length());
         contentLanguage = EMPTY_STRING;
         connection = "keep-alive";
-        body = EMPTY_STRING;
-        staticFile = false;
+        staticFile = true;
         responseHasBody = true;
 
     }

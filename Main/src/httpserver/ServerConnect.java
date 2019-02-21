@@ -137,6 +137,10 @@ public class ServerConnect extends Observable implements Runnable{
             System.out.println(Arrays.asList(request.getParsedData()));
             System.out.println(request.getParsedData().size());
 
+            request.setParsedData();
+
+            System.out.println(request.toString());
+
             RequestHandler requestHandler = new RequestHandler();
 
             Response response = requestHandler.doEverything(request);

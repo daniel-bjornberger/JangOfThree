@@ -51,6 +51,7 @@ public class GenericModuleClass implements Service {
 
         );
         response.setContentLength(response.getBody().length());
+        response.setStaticFile(false);
     }
 
     @Override

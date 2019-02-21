@@ -98,9 +98,7 @@ public class RequestFactory {
             }
 
         }
-
-        requestObject.setParsedData();
-
+        
         return requestObject;
 
     }

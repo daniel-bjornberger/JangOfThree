@@ -75,6 +75,14 @@ public class RequestHandler {
                     response.setContentLength(response.getBody().length());
                     request.setValid(false);
                     break;
+                case ".ico":
+                    response.setStatus("200");
+                    response.setStatusMessage("OK");
+                    response.setContentType("image/x-icon");
+                    response.setBody(request.getFullUrl());
+                    response.setContentLength(response.getBody().length());
+                    request.setValid(false);
+                    break;
 
             }
             response.setContentLength((int)(new File(new File("."),response.getBody()).length()));
