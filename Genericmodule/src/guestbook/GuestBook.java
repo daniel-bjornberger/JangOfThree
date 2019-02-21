@@ -11,6 +11,11 @@ import java.io.File;
 @Adress("/guestbook")
 @Type("URL")
 public class GuestBook implements Service {
+
+    /**
+     * @author Joel Gunnarsson
+     */
+
     @Override
     public void execute(Request request, Response response) {
         System.out.println("Running Guestbook");

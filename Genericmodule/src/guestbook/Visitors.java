@@ -1,6 +1,11 @@
 package guestbook;
 
 public class Visitors {
+
+    /**
+     * @author Joel Gunnarsson
+     */
+
     private String firstName;
     private String messeges;
 

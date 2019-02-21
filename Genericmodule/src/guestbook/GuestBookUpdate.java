@@ -16,6 +16,11 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @Type("utility")
 public class GuestBookUpdate implements Service {
     public GuestBookUpdate() {
+
+        /**
+         * @author Joel Gunnarsson
+         */
+
     }
 
     @Override
