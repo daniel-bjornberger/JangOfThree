@@ -33,8 +33,8 @@ public class RequestObserver implements Observer {
             RequestFactory requestFactory = new RequestFactory();
             Request request = requestFactory.createRequestObject(requestString);
             System.out.println("Request object created successfully!");
-            if (staticFileHandler.detect(request)!=null){
-                System.out.println(staticFileHandler.detect(request) + " file requested.");
+            if (StaticFileHandler.detect(request)!=null){
+                System.out.println(StaticFileHandler.detect(request) + " file requested.");
             }
             if(request.isValid()){
                 System.out.println("No static file requested.");

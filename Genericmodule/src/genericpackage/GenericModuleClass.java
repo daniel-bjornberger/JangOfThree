@@ -36,7 +36,7 @@ public class GenericModuleClass implements Service {
                 System.out.println("KLASSER SOM LADDATS IN:" +currentClass);
 
                 stringBuilder.append(
-                        "<p>Click <a href=\"http://localhost:8082"+currentClass+ "\">here</a> to go to "+currentClass+".</p>"
+                        "<p><a href=\"http://localhost:8082"+currentClass+ "\">"+currentClass +"</a></p>"
                 );
             }
         }

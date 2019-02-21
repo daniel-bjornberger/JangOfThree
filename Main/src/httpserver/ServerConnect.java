@@ -185,7 +185,7 @@ public class ServerConnect extends Observable implements Runnable{
                 //OM STATISK FIL:
 
                 if(        response.isStaticFile()
-                        //staticFileHandler.isStaticContentType(response)
+                        //StaticFileHandler.isStaticContentType(response)
                  ) {
                     isFile = true;
                     System.out.println("file is true");
@@ -194,7 +194,7 @@ public class ServerConnect extends Observable implements Runnable{
                 }
 
 
-                //boolean isFile = Arrays.stream(staticFileHandler.getFormats()).filter(p -> p.equals(response.getContentType())).findFirst().isPresent();
+                //boolean isFile = Arrays.stream(StaticFileHandler.getFormats()).filter(p -> p.equals(response.getContentType())).findFirst().isPresent();
                 byte[] fileData;
                 if (isFile){
                     file = new File(WEB_ROOT,response.getBody());

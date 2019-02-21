@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Head Ajax Demo</title>
+
+    <link href="standard.css" rel = "stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+
+
+<h3>Demo of HEAD request using AJAX</h3>
+
+<p>Test of HEAD request. For a HEAD request, only the header information will be present in the response, not the body.</p>
+<p>A HEAD request for this picture:</p>
+
+<img src="PageDir/jarjar.jpg">
+
+<p>will have a response that looks like this:</p>
+
+<p id="demo"></p>
+
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("demo").innerHTML =
+    this.getAllResponseHeaders();
+  }
+};
+xhttp.open("GET", "PageDir/jarjar.jpg", true);
+xhttp.send();
+</script>
+
+
+</body>
+</html>

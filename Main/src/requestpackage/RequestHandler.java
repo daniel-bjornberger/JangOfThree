@@ -1,6 +1,5 @@
 package requestpackage;
 
-import httpserver.ServerConnect;
 import loadservices.Adress;
 import loadservices.Service;
 import loadservices.ServiceHandler;
@@ -20,8 +19,8 @@ public class RequestHandler {
             response.setResponseHasBody(request.responseShallHaveBody());
 
 
-        if (staticFileHandler.detect(request)!=null){
-            String fileType =staticFileHandler.detect(request);
+        if (StaticFileHandler.detect(request)!=null){
+            String fileType = StaticFileHandler.detect(request);
                     System.out.println( fileType + " file requested.");
             switch (fileType){
                 case ".html":
