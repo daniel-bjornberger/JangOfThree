@@ -8,8 +8,11 @@ import responsepackage.Response;
 import java.io.File;
 
 
+/**
+ * @author Daniel Björnberger
+ */
 @Adress("/head")
-@Type("Standard")
+@Type("URL")
 public class HeadRequest implements Service {
 
     @Override
