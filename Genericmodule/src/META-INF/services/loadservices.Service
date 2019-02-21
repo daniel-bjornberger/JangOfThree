@@ -5,3 +5,4 @@ guestbook.GuestBookUpdate
 standardpackage.HeadRequest
 standardpackage.FileNotFound
 standardpackage.NotImplemented
+genericpackage.Alert
