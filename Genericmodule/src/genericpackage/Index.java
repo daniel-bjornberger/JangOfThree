@@ -9,7 +9,7 @@ import responsepackage.Response;
 import java.io.File;
 
 @Adress("/")
-@Type("URL")
+@Type("startpage")
 public class Index implements Service {
     @Override
     public void execute(Request request, Response response) {

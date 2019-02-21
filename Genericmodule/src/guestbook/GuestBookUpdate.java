@@ -16,12 +16,17 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @Type("utility")
 public class GuestBookUpdate implements Service {
     public GuestBookUpdate() {
+
+        /**
+         * @author Joel Gunnarsson
+         */
+
     }
 
     @Override
     public void execute(Request request, Response response) {
 
-        System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+
         System.out.println(request.getParsedData().size());
         String firstname=request.getParsedData().get("firstname");
         String messeges=request.getParsedData().get("messeges");

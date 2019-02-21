@@ -19,12 +19,15 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Returnjson implements Service {
 
+    /**
+     * @author Joel Gunnarsson
+     */
+
+
     @Override
     public void execute(Request request, Response response) {
         Gson gson = new Gson();
         String serialized = gson.toJson(request.getParsedData());
-
-
         response.setStatus("200");
         response.setStatusMessage("OK");
         response.setContentType("text/html");

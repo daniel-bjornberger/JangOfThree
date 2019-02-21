@@ -8,17 +8,22 @@ public class GuestBookDB {
     String path = "jdbc:sqlite:visitors.db";
 
     public GuestBookDB() {
+
+        /**
+         * @author Joel Gunnarsson
+         */
+
         try {
             Connection sqliteConnection = DriverManager.getConnection(path);
 
-            //Skapa tabell för visitors om den inte finns
-            String sql_create_tabel = "CREATE TABLE IF NOT EXISTS visitors(" +
+
+            String sqlstart = "CREATE TABLE IF NOT EXISTS visitors(" +
                     "ID integer PRIMARY KEY," +
                     "firstname TEXT," +
                     "messages TEXT);";
 
             Statement stmt = sqliteConnection.createStatement();
-            stmt.execute(sql_create_tabel);
+            stmt.execute(sqlstart);
             stmt.close();
             sqliteConnection.close();
         } catch (SQLException e) {
@@ -30,12 +35,12 @@ public class GuestBookDB {
         try {
             Connection sqliteConnection = DriverManager.getConnection(path);
 
-            //Lägg till en kund i tabellen visitors
-            String sql_insert_customer = "INSERT INTO visitors(firstname,messages)" +
+
+            String sqlInsert = "INSERT INTO visitors(firstname,messages)" +
                     " VALUES('"+ firstname + "','"+ messages + "');";
 
             Statement stmt = sqliteConnection.createStatement();
-            stmt.execute(sql_insert_customer);
+            stmt.execute(sqlInsert);
             stmt.close();
             sqliteConnection.close();
         } catch (SQLException e) {
@@ -50,13 +55,12 @@ public class GuestBookDB {
         try {
             Connection sqliteConnection = DriverManager.getConnection(path);
 
-            //Hämta alla besökare
-            String sql_select_customer = "SELECT * FROM visitors";
-            System.out.println(sql_select_customer);
+            String sqlSelect= "SELECT * FROM visitors";
+
 
             Statement stmt = sqliteConnection.createStatement();
 
-            ResultSet rs = stmt.executeQuery(sql_select_customer);
+            ResultSet rs = stmt.executeQuery(sqlSelect);
 
             while (rs.next()) {
                 visitorList.add(visitors = new Visitors(rs.getString("firstname"), rs.getString("messages")));
@@ -73,9 +77,6 @@ public class GuestBookDB {
     public void close(){
 
     }
-
-
-
 
 }
 
