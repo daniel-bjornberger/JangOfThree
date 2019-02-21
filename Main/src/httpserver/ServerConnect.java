@@ -135,6 +135,10 @@ public class ServerConnect extends Observable implements Runnable{
             }
             System.out.println("REWUEST BODYYYYYY  :"+request.getBody());
 
+            request.setParsedData();
+
+            System.out.println(request.toString());
+
             RequestHandler requestHandler = new RequestHandler();
 
             Response response = requestHandler.doEverything(request);
