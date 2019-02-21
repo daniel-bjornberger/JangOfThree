@@ -21,7 +21,7 @@ public class GuestBookUpdate implements Service {
     @Override
     public void execute(Request request, Response response) {
 
-        System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+
         System.out.println(request.getParsedData().size());
         String firstname=request.getParsedData().get("firstname");
         String messeges=request.getParsedData().get("messeges");
