@@ -2,3 +2,4 @@ genericpackage.GenericModuleClass
 genericpackage.Index
 guestbook.GuestBook
 guestbook.GuestBookUpdate
+standardpackage.HeadRequest
