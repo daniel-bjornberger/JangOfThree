@@ -30,7 +30,6 @@ public class RequestFactory {
                 requestObject = new GetRequest();
                 requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                requestObject.setResponseShallHaveBody(true);
                 break;
 
             case "HEAD":
@@ -43,7 +42,6 @@ public class RequestFactory {
                 requestObject = new PostRequest();
                 requestObject.setFullUrl(currentRow[1].toLowerCase());
                 requestObject.setProtocolVersion(currentRow[2].toLowerCase());
-                requestObject.setResponseShallHaveBody(true);
                 break;
 
             default:
