@@ -87,9 +87,6 @@ public class RequestHandler {
             }
             response.setContentLength((int)(new File(new File("."),response.getBody()).length()));
             response.setStaticFile(true);
-
-            System.out.println(response);
-                return response;
             }
             if(request.isValid()){
                 System.out.println("No static file requested.");
@@ -103,7 +100,7 @@ public class RequestHandler {
                         service.execute(request, response);
                     }
                     for(Service service:serviceHandler.getServices()){
-                        if (service.getClass().getAnnotation(Type.class).value().equals("Standard")){
+                        if (service.getClass().getAnnotation(Type.class).value().equals("standard")){
                             service.execute(request, response);
                         }
                     }
