@@ -1,112 +1,51 @@
 package guestbook;
 
-import requestpackage.Request;
-
 import java.sql.*;
-
-/** Class that loads the driver class and handles the connection to the database.
- * @author Joel Gunnarsson
- */
-
 
 public class GuestBookDB {
 
-    /** The database URL.
-     */
-    private final static String dbConnection = "jdbc:sqlite:" + System.getProperty("user.dir") + "\\Database1";
+    String path = "jdbc:sqlite:visitors.db";
 
-    /** The connection to the database.
-     */
-    private static Connection con;
-    static {
-
-        try {
-            Class.forName("org.sqlite.JDBC");
-        } catch (ClassNotFoundException e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
-    /** The method getCon returns the connection to the database.
-     * @return The connection to the database.
-     */
-    public static Connection getCon() {
-        return con;
-    }
-
-    /** Constructor
-     */
     public GuestBookDB() {
-        getConnection();
-    }
-
-    /** The method getConnection establishes a connection to the database.
-     */
-    private void getConnection() {
-
         try {
-            con = DriverManager.getConnection(dbConnection);
-        } catch (SQLException sqle) {
-            System.err.println(sqle.getMessage());
+            Connection sqliteConnection = DriverManager.getConnection(path);
+
+            //Skapa tabell för visitors om den inte finns
+            String sql_create_tabel = "CREATE TABLE IF NOT EXISTS visitors(" +
+                    "ID integer PRIMARY KEY," +
+                    "Name TEXT);";
+
+            Statement stmt = sqliteConnection.createStatement();
+            stmt.execute(sql_create_tabel);
+            stmt.close();
+            sqliteConnection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    public static void closeConnection(){
+    public void addCustomer(String name) {
+        try {
+            Connection sqliteConnection = DriverManager.getConnection(path);
 
-        if ( con!= null) {
-            try {
-                con.close();
+            //Lägg till en kund i tabellen visitors
+            String sql_insert_customer = "INSERT INTO visitors(Name)" +
+                    " VALUES('"+ name + "');";
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-    }
-
-    /** The method hasConnection checks if a connection to the database has been established.
-     * @return Boolean value, true if a connection was successfully established, fail if no connection has been established.
-     */
-    public boolean hasConnection(){
-        if (con != null){
-            return true;
-        }
-        else {
-            return false;
+            Statement stmt = sqliteConnection.createStatement();
+            stmt.execute(sql_insert_customer);
+            stmt.close();
+            sqliteConnection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    public static boolean callDb(Request request) {
-
-        String firstname="Joel";
-        String lastname="Gunnarsson";
-        String messages="This is a messages";
-
-        int rowCount = -1;
-
-        String SQL = "INSERT INTO guestbook(firstname, lastname, message) VALUES(" +
-                firstname + ", '" + lastname+ "', '" + messages + "');";
-
-
-        if (getCon() != null) {
-
-            try {
-                Statement stm = getCon().createStatement();
-
-                rowCount = stm.executeUpdate(SQL);
-
-                stm.close();
-            }
-            catch (SQLException e) {
-                System.err.println(e.getMessage());
-            }
-
-        }
-
-        return rowCount == 1;
+    public void close(){
 
     }
+
+
 
 
 }
