@@ -38,8 +38,10 @@ public class StaticFileHandler {
 
     public static String detect(Request request){
         for(String format: formats) {
-            if (request.getFullUrl().endsWith(format)) {
+            if (request.getBaseUrl().endsWith(format)) {
+                System.out.println("Format = " + request.getBaseUrl());
                 return format;
+
             }
         }
         return null;

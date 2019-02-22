@@ -21,20 +21,21 @@ public class RequestHandler {
 
         if (StaticFileHandler.detect(request)!=null){
             String fileType = StaticFileHandler.detect(request);
+            
                     System.out.println( fileType + " file requested.");
             switch (fileType){
                 case ".html":
                     response.setStatus("200");
                     response.setStatusMessage("OK");
                     response.setContentType("text/html");
-                    response.setBody(request.getFullUrl());
+                    response.setBody(request.getBaseUrl());
                     response.setContentLength(response.getBody().length());
                     break;
                 case ".css":
                     response.setStatus("200");
                     response.setStatusMessage("OK");
                     response.setContentType("text/css");
-                    response.setBody(request.getFullUrl());
+                    response.setBody(request.getBaseUrl());
                     response.setContentLength(response.getBody().length());
 
                     break;
@@ -42,7 +43,7 @@ public class RequestHandler {
                     response.setStatus("200");
                     response.setStatusMessage("OK");
                     response.setContentType("text/javascript");
-                    response.setBody(request.getFullUrl());
+                    response.setBody(request.getBaseUrl());
                     response.setContentLength(response.getBody().length());
 
                     break;
@@ -51,7 +52,7 @@ public class RequestHandler {
                     response.setStatus("200");
                     response.setStatusMessage("OK");
                     response.setContentType("application/pdf");
-                    response.setBody(request.getFullUrl());
+                    response.setBody(request.getBaseUrl());
                     response.setContentLength(response.getBody().length());
 
                     System.out.println("got to pdf switch");
@@ -60,7 +61,7 @@ public class RequestHandler {
                     response.setStatus("200");
                     response.setStatusMessage("OK");
                     response.setContentType("image/png");
-                    response.setBody(request.getFullUrl());
+                    response.setBody(request.getBaseUrl());
                     response.setContentLength(response.getBody().length());
 
 
@@ -70,7 +71,7 @@ public class RequestHandler {
                     response.setStatusMessage("OK");
                     response.setContentType("image/jpeg");
                     System.out.println("REQUEST FULL URL:"+ request.getFullUrl());
-                    response.setBody(request.getFullUrl());
+                    response.setBody(request.getBaseUrl());
                     response.setContentLength(response.getBody().length());
                     System.out.println(".jpg case ran!!!  response body is:" + response.getBody());
 
@@ -79,7 +80,7 @@ public class RequestHandler {
                     response.setStatus("200");
                     response.setStatusMessage("OK");
                     response.setContentType("image/x-icon");
-                    response.setBody(request.getFullUrl());
+                    response.setBody(request.getBaseUrl());
                     response.setContentLength(response.getBody().length());
                     request.setValid(false);
                     break;
