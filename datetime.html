@@ -1,41 +1,83 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Date & Time</title>
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <head>
 
+        <meta charset="UTF-8">
+        <title>Date & Time</title>
 
-    <script type="text/javascript">
-
-    function myFunction() {
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 
+        <script type="text/javascript">
 
-    console.log("bc");
+            function get(name){
 
-    document.getElementById("body").style.backgroundColor = "red";
-
-
-    }
-
-    window.onload = myFunction;
+                if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+                return decodeURIComponent(name[1]);
+            }
 
 
+            function myFunction() {
 
-    </script>
-
-</head>
-
-
-
-<body id="body">
-
-<p>Hej!</p>
+                var bc = get("backgroundcolour");
+                var ff = get("fontfamily");
+                var tc = get("textcolour");
 
 
+                console.log(bc);
+                console.log(ff);
+                console.log(tc);
 
-</body>
+                document.getElementById("body").style.backgroundColor = bc;
+                document.getElementById("date").style.fontFamily = ff;
+                document.getElementById("date").style.color = tc;
+
+                var datetime = new Date();
+                document.getElementById("date").innerHTML = datetime.toString();
+
+                document.getElementById("mainpage").style.fontFamily = ff;
+                document.getElementById("mainpage").style.color = tc;
+
+                document.getElementById("prevpage").style.fontFamily = ff;
+                document.getElementById("prevpage").style.color = tc;
+
+            }
+
+            window.onload = myFunction;
+
+        </script>
+
+
+    </head>
+
+    <body id="body">
+
+        <br>
+        <br>
+        <br>
+
+        <h1 id="date" style="text-align:center;"></h1>
+
+        <br>
+        <br>
+        <br>
+
+        <div style="text-align:center">
+            <a id="prevpage" href="/date_time_viewer">Tillbaka till föregående sida</a>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div style="text-align:center">
+            <a id="mainpage" href="/">Tillbaka till serverns förstasida</a>
+        </div>
+
+
+    </body>
+
 </html>

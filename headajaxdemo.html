@@ -1,47 +1,56 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Head Ajax Demo</title>
 
-    <link href="standard.css" rel = "stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <head>
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-</head>
-<body>
+        <meta charset="UTF-8">
+        <title>Head Ajax Demo</title>
 
+        <link href="standard.css" rel = "stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-<h3>Demo of HEAD request using AJAX</h3>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-<p>Test of HEAD request. For a HEAD request, only the header information will be present in the response, not the body.</p>
-<p>A HEAD request for this picture:</p>
+    </head>
 
-<img src="PageDir/jarjar.jpg">
+    <body>
 
-<p>will have a response that looks like this:</p>
+        <h3>Demo av HEAD request och response, med hjälp av AJAX</h3>
 
-<p id="demo"></p>
+        <p>Test av HEAD request. I response'n till en HEAD request ingår endast header'n, inte body'n.</p>
+        <p>En HEAD request för den här bilden:</p>
 
-<script>
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("demo").innerHTML =
-    this.getAllResponseHeaders();
-  }
-};
-xhttp.open("GET", "PageDir/jarjar.jpg", true);
-xhttp.send();
-</script>
+        <img src="PageDir/jarjar.jpg">
 
-<pre>
+        <p>kommer att få en response som ser ut så här:</p>
 
+        <p id="demo"></p>
 
-</pre>
+        <script>
 
-<a href="/">Back to Main page</a>
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
 
-</body>
+              if (this.readyState == 4 && this.status == 200) {
+
+                document.getElementById("demo").innerHTML = this.getAllResponseHeaders();
+
+              }
+
+            };
+
+            xhttp.open("HEAD", "PageDir/jarjar.jpg", true);
+            xhttp.send();
+
+        </script>
+
+        <br>
+        <br>
+
+        <a href="/">Tillbaka till serverns förstasida</a>
+
+    </body>
+
 </html>

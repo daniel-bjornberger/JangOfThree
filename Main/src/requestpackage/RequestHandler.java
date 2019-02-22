@@ -21,7 +21,7 @@ public class RequestHandler {
 
         if (StaticFileHandler.detect(request)!=null){
             String fileType = StaticFileHandler.detect(request);
-            
+
                     System.out.println( fileType + " file requested.");
             switch (fileType){
                 case ".html":
