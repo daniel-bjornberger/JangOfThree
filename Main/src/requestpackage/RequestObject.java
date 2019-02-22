@@ -262,11 +262,7 @@ public abstract class RequestObject implements Request {
 
         String url = this.getFullUrl();
 
-        System.out.println(url);
-
         String[] data = url.split("\\?", 2);
-
-        System.out.println(data.length);
 
         this.setBaseUrl(data[0]);
 

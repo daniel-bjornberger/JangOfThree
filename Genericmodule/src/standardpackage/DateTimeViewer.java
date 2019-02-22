@@ -19,15 +19,12 @@ public class DateTimeViewer implements Service {
     @Override
     public void execute(Request request, Response response) {
 
-        System.out.println("Running DateTimeViewer...");
         response.setStatus("200");
         response.setStatusMessage("OK");
         response.setContentType("text/html");
         response.setBody("datetimeinput.html");
         response.setContentLength((int)(new File(new File("."),response.getBody()).length()));
         response.setStaticFile(true);
-
-        System.out.println(response.toString());
 
     }
 

@@ -79,8 +79,6 @@ public class PostRequest extends RequestObject{
 
         if (this.bodyIsSet()) {
 
-            System.out.println("Body för POST request: " + this.getBody());
-
             String[] data = this.getBody().split("[=&]+");
 
             for (int i = 0; i < data.length; i += 2) {
