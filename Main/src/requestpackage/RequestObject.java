@@ -7,7 +7,6 @@ import java.util.HashMap;
  */
 public abstract class RequestObject implements Request {
 
-
     private String fullUrl;
 
     private String baseUrl;
@@ -60,6 +59,7 @@ public abstract class RequestObject implements Request {
     }
 
 
+
     @Override
     public String getFullUrl() {
         return this.fullUrl;
@@ -107,6 +107,7 @@ public abstract class RequestObject implements Request {
         return this.protocolVersion.length() > 0;
     }
 
+
     @Override
     public String getHost() {
         return this.host;
@@ -121,6 +122,7 @@ public abstract class RequestObject implements Request {
     public boolean hostIsSet() {
         return this.host.length() > 0;
     }
+
 
     @Override
     public String[] getAccept() {
@@ -137,6 +139,7 @@ public abstract class RequestObject implements Request {
         return this.accept.length > 0;
     }
 
+
     @Override
     public String[] getAcceptLanguage() {
         return this.acceptLanguage;
@@ -151,6 +154,7 @@ public abstract class RequestObject implements Request {
     public boolean acceptLanguageIsSet() {
         return this.acceptLanguage.length > 0;
     }
+
 
     @Override
     public String[] getAcceptCharset() {
@@ -167,6 +171,7 @@ public abstract class RequestObject implements Request {
         return this.acceptCharset.length > 0;
     }
 
+
     @Override
     public String[] getAcceptEncoding() {
         return this.acceptEncoding;
@@ -181,6 +186,7 @@ public abstract class RequestObject implements Request {
     public boolean acceptEncodingIsSet() {
         return this.acceptEncoding.length > 0;
     }
+
 
     @Override
     public String getConnection() {
@@ -197,6 +203,7 @@ public abstract class RequestObject implements Request {
         return this.connection.length() > 0;
     }
 
+
     @Override
     public String getContentType() {
         return EMPTY_STRING;
@@ -211,6 +218,7 @@ public abstract class RequestObject implements Request {
     public boolean contentTypeIsSet() {
         return false;
     }
+
 
     @Override
     public int getContentLength() {
@@ -227,6 +235,7 @@ public abstract class RequestObject implements Request {
         return false;
     }
 
+
     @Override
     public String getBody() {
         return EMPTY_STRING;
@@ -242,6 +251,7 @@ public abstract class RequestObject implements Request {
         return false;
     }
 
+
     @Override
     public boolean isValid() {
         return this.valid;
@@ -251,6 +261,7 @@ public abstract class RequestObject implements Request {
     public void setValid(boolean valid) {
         this.valid = valid;
     }
+
 
     @Override
     public HashMap<String, String> getParsedData() {
@@ -286,7 +297,6 @@ public abstract class RequestObject implements Request {
     public boolean parsedDataIsSet() {
         return !this.parsedData.isEmpty();
     }
-
 
 
     public boolean responseShallHaveBody() {

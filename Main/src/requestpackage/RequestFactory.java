@@ -10,7 +10,6 @@ public class RequestFactory {
 
     public RequestObject createRequestObject(String input) {
 
-
         String[] inputRowByRow = input.split("\\n");
 
         String[] currentRow = inputRowByRow[0].split("[,\\s]+");
@@ -94,7 +93,6 @@ public class RequestFactory {
         return requestObject;
 
     }
-
 
 
 

@@ -7,7 +7,6 @@ import java.util.Arrays;
  */
 public class HeadRequest extends RequestObject {
 
-
     public HeadRequest() {
 
         super();
@@ -54,5 +53,6 @@ public class HeadRequest extends RequestObject {
         return returnString.toString();
 
     }
+
 
 }

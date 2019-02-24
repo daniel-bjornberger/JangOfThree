@@ -1,15 +1,13 @@
 package responsepackage;
 
-import java.io.File;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
-import java.util.Date;
+
 
 /**
  * @author Daniel Björnberger
  */
 public class ResponseObject implements Response {
-
 
     private String protocolVersion;
 
@@ -40,7 +38,6 @@ public class ResponseObject implements Response {
 
 
 
-
     public ResponseObject() {
 
         protocolVersion = "HTTP/1.1";
@@ -50,15 +47,13 @@ public class ResponseObject implements Response {
         server = "Java HTTP Server from JangOfThree : 1.0";
         contentType = EMPTY_STRING;
         body = EMPTY_STRING;
-        //contentLength = (int) new File(".", body).length();
-        contentLength=0;
+        contentLength = 0;
         contentLanguage = EMPTY_STRING;
         connection = "keep-alive";
         staticFile = false;
         responseHasBody = true;
 
     }
-
 
 
 
@@ -71,6 +66,7 @@ public class ResponseObject implements Response {
     public void setProtocolVersion(String protocolVersion) {
         this.protocolVersion = protocolVersion;
     }
+
 
     @Override
     public String getStatus() {
@@ -87,6 +83,7 @@ public class ResponseObject implements Response {
         return this.status.length() > 0;
     }
 
+
     @Override
     public String getStatusMessage() {
         return this.statusMessage;
@@ -102,6 +99,7 @@ public class ResponseObject implements Response {
         return this.statusMessage.length() > 0;
     }
 
+
     @Override
     public String getDate() {
         return this.date;
@@ -109,15 +107,14 @@ public class ResponseObject implements Response {
 
     @Override
     public void setDate() {
-        this.date = new Date().toString();
-        //this.date = java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneOffset.UTC));
-
+        this.date = java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneOffset.UTC));
     }
 
     @Override
     public boolean dateIsSet() {
         return this.date.length() > 0;
     }
+
 
     @Override
     public String getServer() {
@@ -134,6 +131,7 @@ public class ResponseObject implements Response {
         return this.server.length() > 0;
     }
 
+
     @Override
     public String getContentType() {
         return this.contentType;
@@ -148,6 +146,7 @@ public class ResponseObject implements Response {
     public boolean contentTypeIsSet() {
         return this.contentType.length() > 0;
     }
+
 
     @Override
     public int getContentLength() {
@@ -164,6 +163,7 @@ public class ResponseObject implements Response {
         return this.contentLength > 0;
     }
 
+
     @Override
     public String getContentLanguage() {
         return this.contentLanguage;
@@ -178,6 +178,7 @@ public class ResponseObject implements Response {
     public boolean contentLanguageIsSet() {
         return this.contentLanguage.length() > 0;
     }
+
 
     @Override
     public String getConnection() {
@@ -194,6 +195,7 @@ public class ResponseObject implements Response {
         return this.connection.length() > 0;
     }
 
+
     @Override
     public String getBody() {
         return this.body;
@@ -209,6 +211,7 @@ public class ResponseObject implements Response {
         return this.body.length() > 0;
     }
 
+
     @Override
     public boolean isStaticFile() {
         return this.staticFile;
@@ -218,6 +221,7 @@ public class ResponseObject implements Response {
     public void setStaticFile(boolean staticFile) {
         this.staticFile = staticFile;
     }
+
 
     @Override
     public boolean responseHasBody() {

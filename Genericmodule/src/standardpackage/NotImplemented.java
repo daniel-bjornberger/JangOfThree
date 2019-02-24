@@ -14,6 +14,7 @@ import java.io.File;
 @Type("standard")
 public class NotImplemented implements Service {
 
+
     @Override
     public void execute(Request request, Response response) {
 

@@ -15,6 +15,7 @@ import java.io.File;
 @Type("URL")
 public class HeadAjaxDemo implements Service {
 
+
     @Override
     public void execute(Request request, Response response) {
 
@@ -27,10 +28,13 @@ public class HeadAjaxDemo implements Service {
 
     }
 
+
+
     @Override
     public String toString() {
         return "HeadAjaxDemo";
     }
+
 
 }
 

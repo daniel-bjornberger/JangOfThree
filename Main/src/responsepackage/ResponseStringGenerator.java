@@ -8,12 +8,12 @@ public class ResponseStringGenerator {
 
     public String createResponseString(ResponseObject responseObject) throws Exception {
 
-        if (responseObject.statusIsSet() && responseObject.statusMessageIsSet() && responseObject.contentTypeIsSet() && responseObject.contentLengthIsSet()) {
 
+        if (responseObject.statusIsSet() && responseObject.statusMessageIsSet()
+                && responseObject.contentTypeIsSet() && responseObject.contentLengthIsSet()) {
 
             StringBuilder builder = new StringBuilder(responseObject.getProtocolVersion() + " " +
                     responseObject.getStatus() + " " + responseObject.getStatusMessage());
-
 
             responseObject.setDate();
 
@@ -22,7 +22,6 @@ public class ResponseStringGenerator {
             builder.append("\nServer: " + responseObject.getServer());
 
             builder.append("\nContent-Type: " + responseObject.getContentType());
-
 
 
             builder.append("\nContent-length: " + responseObject.getContentLength());
@@ -39,6 +38,7 @@ public class ResponseStringGenerator {
                 builder.append("\nConnection: " + responseObject.getConnection());
 
             }
+
 
             return builder.toString();
 

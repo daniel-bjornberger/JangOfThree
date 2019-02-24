@@ -5,13 +5,13 @@ package requestpackage;
  */
 public class NotImplementedRequest extends RequestObject {
 
-
     public NotImplementedRequest() {
 
         super();
         this.setImplemented(false);
 
     }
+
 
 
     @Override
@@ -30,5 +30,6 @@ public class NotImplementedRequest extends RequestObject {
         return  "Method: NOT_IMPLEMENTED";
 
     }
+
 
 }

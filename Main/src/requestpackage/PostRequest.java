@@ -7,12 +7,12 @@ import java.util.Arrays;
  */
 public class PostRequest extends RequestObject{
 
-
     private String contentType;
 
     private int contentLength;
 
     private String body;
+
 
 
     public PostRequest() {
@@ -24,6 +24,7 @@ public class PostRequest extends RequestObject{
         body = RequestObject.EMPTY_STRING;
 
     }
+
 
 
     @Override
@@ -41,6 +42,7 @@ public class PostRequest extends RequestObject{
         return this.contentType.length() > 0;
     }
 
+
     @Override
     public int getContentLength() {
         return this.contentLength;
@@ -55,6 +57,7 @@ public class PostRequest extends RequestObject{
     public boolean contentLengthIsSet() {
         return this.contentLength > 0;
     }
+
 
     @Override
     public String getBody() {

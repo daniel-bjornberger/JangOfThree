@@ -1,6 +1,5 @@
 package standardpackage;
 
-
 import loadservices.Adress;
 import loadservices.Service;
 import loadservices.Type;
@@ -29,9 +28,11 @@ public class DateTimeViewer implements Service {
     }
 
 
+    
     @Override
     public String toString() {
         return "DateTimeViewer";
     }
+
 
 }
