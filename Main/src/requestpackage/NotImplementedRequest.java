@@ -5,7 +5,7 @@ package requestpackage;
  */
 public class NotImplementedRequest extends RequestObject {
 
-    public NotImplementedRequest() {
+    NotImplementedRequest() {
 
         super();
         this.setImplemented(false);

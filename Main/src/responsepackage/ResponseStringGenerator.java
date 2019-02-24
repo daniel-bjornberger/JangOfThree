@@ -17,25 +17,24 @@ public class ResponseStringGenerator {
 
             responseObject.setDate();
 
-            builder.append("\nDate: " + responseObject.getDate());
+            builder.append("\nDate: ").append(responseObject.getDate());
 
-            builder.append("\nServer: " + responseObject.getServer());
+            builder.append("\nServer: ").append(responseObject.getServer());
 
-            builder.append("\nContent-Type: " + responseObject.getContentType());
+            builder.append("\nContent-Type: ").append(responseObject.getContentType());
 
-
-            builder.append("\nContent-length: " + responseObject.getContentLength());
+            builder.append("\nContent-length: ").append(responseObject.getContentLength());
 
 
             if (responseObject.contentLanguageIsSet()) {
 
-                builder.append("\nContent-Language: " + responseObject.getContentLanguage());
+                builder.append("\nContent-Language: ").append(responseObject.getContentLanguage());
 
             }
 
             if (responseObject.connectionIsSet()) {
 
-                builder.append("\nConnection: " + responseObject.getConnection());
+                builder.append("\nConnection: ").append(responseObject.getConnection());
 
             }
 

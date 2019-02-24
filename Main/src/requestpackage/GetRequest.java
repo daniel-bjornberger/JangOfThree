@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class GetRequest extends RequestObject {
 
-    public GetRequest() {
+    GetRequest() {
 
         super();
 

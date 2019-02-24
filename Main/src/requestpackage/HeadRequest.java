@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class HeadRequest extends RequestObject {
 
-    public HeadRequest() {
+    HeadRequest() {
 
         super();
         this.setResponseShallHaveBody(false);

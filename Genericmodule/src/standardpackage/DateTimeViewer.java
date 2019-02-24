@@ -28,7 +28,7 @@ public class DateTimeViewer implements Service {
     }
 
 
-    
+
     @Override
     public String toString() {
         return "DateTimeViewer";

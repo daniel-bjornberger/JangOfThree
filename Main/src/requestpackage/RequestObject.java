@@ -40,7 +40,7 @@ public abstract class RequestObject implements Request {
 
 
 
-    public RequestObject() {
+    RequestObject() {
 
         fullUrl = EMPTY_STRING;
         baseUrl = EMPTY_STRING;

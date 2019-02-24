@@ -15,7 +15,7 @@ public class PostRequest extends RequestObject{
 
 
 
-    public PostRequest() {
+    PostRequest() {
 
         super();
 
