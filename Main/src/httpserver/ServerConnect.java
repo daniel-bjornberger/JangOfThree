@@ -17,9 +17,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
 
-// The tutorial can be found just here on the SSaurel's Blog : 
-// https://www.ssaurel.com/blog/create-a-simple-http-web-server-in-java
-// Each Client Connection will be managed in a dedicated Thread
 public class ServerConnect extends Observable implements Runnable{
 
     static final File WEB_ROOT = new File(".");
@@ -31,12 +28,7 @@ public class ServerConnect extends Observable implements Runnable{
     private ServerSocket serverSocket;
     private String requestString;
 
-
-
-    // verbose mode
     static final boolean verbose = true;
-
-    // Client Connection via Socket Class
     private Socket connect;
 
 
@@ -52,34 +44,6 @@ public class ServerConnect extends Observable implements Runnable{
             e.printStackTrace();
         }
     }
-
-    public String getRequestString() {
-        return requestString;
-    }
-
-   /* public static void main(String[] args) {
-        try {
-
-            //serverSocket = new ServerSocket(PORT);
-            //System.out.println("Server started.\nListening for connections on port : " + PORT + " ...\n");
-
-            // we listen until user halts server execution
-            while (true) {
-                ServerConnect myServer = new ServerConnect(serverSocket.accept());
-
-                if (verbose) {
-                    System.out.println("Connecton opened. (" + new Date() + ")");
-                }
-
-                // create dedicated thread to manage the client connection
-                Thread thread = new Thread(myServer);
-                thread.start();
-            }
-
-        } catch (IOException e) {
-            System.err.println("Server Connection error : " + e.getMessage());
-        }
-    }*/
 
     @Override
     public void run() {
@@ -155,9 +119,6 @@ public class ServerConnect extends Observable implements Runnable{
             System.out.println("=======================================");
 
 
-           // setChanged();
-            //notifyObservers(requestString);
-           // System.out.println(requestString);
             in.reset();
             String input = in.readLine();
 
@@ -169,20 +130,14 @@ public class ServerConnect extends Observable implements Runnable{
             fileRequested = parse.nextToken().toLowerCase();
             System.out.println("filerequested BLALA:" + fileRequested);
             System.out.println("Response.getBody:" + response.getBody());
-            // we support only GET and HEAD methods, we check
 
-                // GET or HEAD method
                fileRequested =response.getBody();
-               // if (fileRequested.endsWith("/")) {
-               //     fileRequested += DEFAULT_FILE;
-               // }
 
                 File file = new File(WEB_ROOT, fileRequested);
 
                 int fileLength;
-               // String content = getContentType(fileRequested);
+
                 boolean isFile= false;
-                //OM STATISK FIL:
 
                 if(        response.isStaticFile()
                         //StaticFileHandler.isStaticContentType(response)
@@ -194,7 +149,6 @@ public class ServerConnect extends Observable implements Runnable{
                 }
 
 
-                //boolean isFile = Arrays.stream(StaticFileHandler.getFormats()).filter(p -> p.equals(response.getContentType())).findFirst().isPresent();
                 byte[] fileData;
                 if (isFile){
                     file = new File(WEB_ROOT,response.getBody());
@@ -210,22 +164,9 @@ public class ServerConnect extends Observable implements Runnable{
 
 
 
-
-               // if (method.equals("GET")) {
-
-                    // GET method so we return content
-                    //fileData = readFileData(file, fileLength);
-
-                    // send HTTP Headers
-                 //   out.println("HTTP/1.1 200 OK");
-                 //  out.println("Server: Java HTTP Server from SSaurel : 1.0");
-                 //   out.println("Date: " + new Date());
-                 //   out.println("Content-type: " + /*content*/"image/jpeg");
-                 //   out.println("Content-length: " + fileLength);
-                 //   System.out.println("Sending response string...");
-                   out.println(responseString);
-                out.println(); // blank line between headers and content, very important !
-                out.flush(); // flush character output stream buffer
+                out.println(responseString);
+                out.println();
+                out.flush();
                     System.out.println("Response String Sent:");
                 System.out.println("---------------------------------");
                 System.out.println(responseString);
@@ -235,12 +176,6 @@ public class ServerConnect extends Observable implements Runnable{
                 if (response.responseHasBody()) {
                     dataOut.write(fileData, 0, fileLength);
                     dataOut.flush();
-                }
-                //System.out.println(Arrays.toString(fileData));
-               // }
-
-                if (verbose) {
-                  //  System.out.println("File " + fileRequested + " of type " + content + " returned");
                 }
 
 
