@@ -13,7 +13,7 @@ import java.io.File;
  */
 @Adress("/head_request_demo")
 @Type("URL")
-public class HeadRequest implements Service {
+public class HeadAjaxDemo implements Service {
 
     @Override
     public void execute(Request request, Response response) {
@@ -29,7 +29,7 @@ public class HeadRequest implements Service {
 
     @Override
     public String toString() {
-        return "HeadRequest";
+        return "HeadAjaxDemo";
     }
 
 }

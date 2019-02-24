@@ -2,7 +2,7 @@ genericpackage.GenericModuleClass
 genericpackage.Index
 guestbook.GuestBook
 guestbook.GuestBookUpdate
-standardpackage.HeadRequest
+standardpackage.HeadAjaxDemo
 standardpackage.FileNotFound
 standardpackage.NotImplemented
 genericpackage.Alert
